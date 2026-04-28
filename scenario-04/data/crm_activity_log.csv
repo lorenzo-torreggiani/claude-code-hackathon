@@ -1,0 +1,17 @@
+activity_id,customer_id,subscription_id,activity_type,activity_date,outcome,pre_save_mrr,post_save_mrr
+ACT-00001,CUST-0456,SUB-00488,discount_offered,2025-02-12T02:30:00+00:00,churned,,
+ACT-00002,CUST-0270,SUB-00289,retention_email,2024-12-28T11:04:00+00:00,saved,,
+ACT-00003,CUST-0275,SUB-00295,retention_email,2025-02-11T05:36:00+00:00,churned,,
+ACT-00004,CUST-0486,SUB-00519,discount_offered,2025-12-15T07:11:00+00:00,saved,399.0,258.7
+ACT-00005,CUST-0415,SUB-00444,retention_call,2025-08-24T21:03:00+00:00,churned,,
+ACT-00006,CUST-0468,SUB-00500,retention_email,2025-08-24T20:04:00+00:00,churned,,
+ACT-00007,CUST-0063,SUB-00066,retention_email,2025-02-11T14:40:00+00:00,saved,,
+ACT-00008,CUST-0143,SUB-00151,retention_call,2025-05-29T19:36:00+00:00,churned,,
+ACT-00009,CUST-0119,SUB-00125,retention_email,2025-07-01T19:38:00+00:00,saved,,
+ACT-00010,CUST-0061,SUB-00064,retention_email,2026-01-21T22:41:00+00:00,churned,,
+ACT-00011,CUST-0078,SUB-00082,retention_call,2025-04-23T08:00:00+00:00,churned,,
+ACT-00012,CUST-0259,SUB-00277,retention_email,2025-02-11T23:43:00+00:00,churned,,
+ACT-00013,CUST-0388,SUB-00416,discount_offered,2025-06-28T03:00:00+00:00,saved,5500.0,4909.74
+ACT-00014,CUST-0218,SUB-00230,discount_offered,2026-02-25T09:16:00+00:00,churned,,
+ACT-00015,CUST-0193,SUB-00204,retention_email,2025-09-06T14:40:00+00:00,churned,,
+ACT-00016,CUST-0151,SUB-00160,contract_renegotiation,2025-10-15T13:33:00+00:00,saved,,

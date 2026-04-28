@@ -1,0 +1,501 @@
+customer_id,company_name,industry,country,segment,segment_correct,is_mislabeled,csm_owner,created_at
+CUST-0001,"Caracciolo, Asmundo e Leone e figli",Healthcare,DE,Mid-market,Micro,True,marco.ricci,2024-02-17
+CUST-0002,Cilea SPA,Education,IT,Micro,Micro,False,elena.russo,2022-05-14
+CUST-0003,"Verdone, Broschi e Querini SPA",Healthcare,NL,SMB,Micro,True,elena.russo,2020-02-24
+CUST-0004,Cabrini e figli,Education,ES,SMB,SMB,False,marco.ricci,2022-07-08
+CUST-0005,Tirabassi SPA,SaaS,PL,Mid-market,Mid-market,False,marco.ricci,2023-11-30
+CUST-0006,"Filangieri, Verdone e Puccini e figli",Fintech,DE,Enterprise,Enterprise,False,sara.conti,2020-07-28
+CUST-0007,Lettiere-Alboni e figli,Manufacturing,PL,Micro,Micro,False,sara.conti,2023-05-21
+CUST-0008,"Raimondi, Morpurgo e Lettiere e figli",Consulting,NL,Mid-market,Mid-market,False,giulia.ferrari,2022-02-14
+CUST-0009,Morandini SPA,Retail,PL,Micro,Micro,False,sara.conti,2023-03-28
+CUST-0010,Parmitano SPA,SaaS,UK,SMB,SMB,False,marco.ricci,2024-05-02
+CUST-0011,Muratori-Iannucci SPA,Healthcare,PL,Mid-market,Mid-market,False,giulia.ferrari,2022-02-17
+CUST-0012,"Sauro, Valguarnera e Cattaneo s.r.l.",Manufacturing,DE,Mid-market,Mid-market,False,sara.conti,2021-12-28
+CUST-0013,Villarosa Group,E-commerce,NL,SMB,SMB,False,marco.ricci,2022-12-29
+CUST-0014,"Opizzi, Ferrabosco e Bonanno SPA",Media,FR,SMB,SMB,False,elena.russo,2021-03-25
+CUST-0015,"Gentilini, Luxardo e Bottaro e figli",SaaS,DE,Mid-market,Mid-market,False,giulia.ferrari,2024-07-06
+CUST-0016,Parmitano Group,E-commerce,DE,Mid-market,Mid-market,False,elena.russo,2024-11-29
+CUST-0017,Ossani-Cuzzocrea Group,Consulting,ES,Mid-market,Mid-market,False,luca.marino,2020-10-19
+CUST-0018,Foscari-Interiano SPA,Education,NL,Mid-market,Mid-market,False,sara.conti,2024-03-09
+CUST-0019,"Donini, Udinese e Gotti e figli",Media,FR,Enterprise,Enterprise,False,marco.ricci,2020-10-10
+CUST-0020,Parisi-Jilani e figli,SaaS,PL,Enterprise,Enterprise,False,giulia.ferrari,2020-11-09
+CUST-0021,"Mocenigo, Bertolucci e Giacconi SPA",Media,NL,SMB,SMB,False,giulia.ferrari,2022-02-27
+CUST-0022,Pietrangeli-Interminelli SPA,Consulting,NL,Enterprise,Enterprise,False,sara.conti,2023-02-07
+CUST-0023,Zola Group,E-commerce,UK,Micro,Micro,False,elena.russo,2024-03-17
+CUST-0024,Tarchetti s.r.l.,Manufacturing,IT,Mid-market,Mid-market,False,sara.conti,2022-06-09
+CUST-0025,"Sauli, Cocci e Iannuzzi e figli",Logistics,NL,SMB,SMB,False,marco.ricci,2022-11-05
+CUST-0026,Zamorani Group,Logistics,PL,Micro,Micro,False,elena.russo,2023-06-01
+CUST-0027,"Renzi, Piane e Orengo e figli",Fintech,NL,SMB,SMB,False,elena.russo,2020-01-02
+CUST-0028,Tommaseo s.r.l.,E-commerce,FR,Mid-market,Mid-market,False,sara.conti,2021-05-05
+CUST-0029,Bellini SPA,Retail,IT,Micro,Micro,False,giulia.ferrari,2024-02-07
+CUST-0030,Curatoli s.r.l.,Education,PL,Enterprise,Enterprise,False,marco.ricci,2020-09-19
+CUST-0031,"Boccaccio, Pavanello e Paruta s.r.l.",Fintech,FR,Enterprise,Enterprise,False,elena.russo,2024-11-21
+CUST-0032,"Gregorio, Visconti e Amato SPA",Education,PL,Enterprise,Enterprise,False,marco.ricci,2023-12-31
+CUST-0033,"Valier, Interiano e Morpurgo SPA",Manufacturing,ES,Mid-market,Mid-market,False,elena.russo,2022-07-13
+CUST-0034,Rizzoli-Cuda s.r.l.,E-commerce,FR,Micro,Micro,False,giulia.ferrari,2023-04-19
+CUST-0035,Iannelli e figli,SaaS,IT,SMB,SMB,False,giulia.ferrari,2021-04-13
+CUST-0036,"Canali, Mancini e Tomaselli e figli",Manufacturing,IT,Micro,Micro,False,elena.russo,2021-05-02
+CUST-0037,Paltrinieri e figli,Healthcare,NL,Mid-market,Mid-market,False,marco.ricci,2024-01-21
+CUST-0038,"Turchetta, Abate e Moccia s.r.l.",Consulting,PL,Enterprise,Enterprise,False,luca.marino,2021-01-24
+CUST-0039,Cardano Group,Media,FR,Micro,Micro,False,luca.marino,2022-04-21
+CUST-0040,Giradello-Bevilacqua e figli,SaaS,UK,Enterprise,Enterprise,False,giulia.ferrari,2020-05-04
+CUST-0041,"Bosurgi, Briccialdi e Speri SPA",E-commerce,DE,Enterprise,Enterprise,False,marco.ricci,2021-01-24
+CUST-0042,"Cavanna, Ceri e Siffredi e figli",Fintech,FR,Enterprise,Enterprise,False,luca.marino,2021-05-26
+CUST-0043,Tron-Ramazzotti e figli,Education,IT,Micro,Micro,False,giulia.ferrari,2023-08-28
+CUST-0044,"Filzi, Mazzacurati e Piane Group",Healthcare,DE,Micro,Micro,False,luca.marino,2022-09-21
+CUST-0045,Trapanese-Salvini SPA,Media,IT,Enterprise,Enterprise,False,marco.ricci,2022-02-15
+CUST-0046,Gasperi SPA,Logistics,PL,Micro,Micro,False,luca.marino,2021-08-07
+CUST-0047,Argentero-Visintini e figli,Education,UK,Enterprise,Enterprise,False,luca.marino,2020-11-13
+CUST-0048,"Galuppi, Aldobrandi e Bondumier SPA",SaaS,NL,SMB,SMB,False,elena.russo,2020-05-04
+CUST-0049,Boito SPA,Retail,ES,Mid-market,Mid-market,False,elena.russo,2024-10-12
+CUST-0050,Bondumier-Tosi e figli,Education,IT,SMB,SMB,False,marco.ricci,2020-05-20
+CUST-0051,Spanevello-Gabba e figli,Healthcare,ES,Micro,Micro,False,giulia.ferrari,2024-12-28
+CUST-0052,"Serraglio, Golino e Serraglio s.r.l.",SaaS,NL,SMB,SMB,False,giulia.ferrari,2022-05-08
+CUST-0053,Caccioppoli SPA,Healthcare,UK,Mid-market,Mid-market,False,sara.conti,2021-05-03
+CUST-0054,"Ricciardi, Nolcini e Randazzo s.r.l.",Logistics,ES,Mid-market,Mid-market,False,sara.conti,2024-03-19
+CUST-0055,Bernini-Caironi SPA,Retail,IT,Enterprise,Micro,True,giulia.ferrari,2023-01-06
+CUST-0056,Morlacchi-Cantimori e figli,Fintech,FR,SMB,SMB,False,giulia.ferrari,2024-12-05
+CUST-0057,Favata s.r.l.,Fintech,ES,SMB,SMB,False,elena.russo,2023-12-11
+CUST-0058,Querini e figli,Education,IT,Mid-market,Mid-market,False,elena.russo,2021-09-05
+CUST-0059,Scandone-Greco SPA,Fintech,FR,Micro,Micro,False,giulia.ferrari,2024-12-27
+CUST-0060,Vigliotti-Cainero SPA,Fintech,FR,Micro,Micro,False,sara.conti,2023-05-23
+CUST-0061,"Veltroni, Anguillara e Cabrini e figli",Healthcare,UK,SMB,SMB,False,sara.conti,2022-11-01
+CUST-0062,Pisano s.r.l.,SaaS,IT,Enterprise,Enterprise,False,luca.marino,2024-08-25
+CUST-0063,Fuseli-Pietrangeli SPA,Manufacturing,PL,Mid-market,Mid-market,False,marco.ricci,2023-07-28
+CUST-0064,Parini SPA,Consulting,NL,Mid-market,Mid-market,False,luca.marino,2023-02-22
+CUST-0065,Impastato-Santorio Group,Fintech,NL,Micro,Micro,False,giulia.ferrari,2024-09-05
+CUST-0066,Vivaldi-Spinelli e figli,Fintech,ES,Mid-market,Mid-market,False,marco.ricci,2020-03-26
+CUST-0067,Malenchini e figli,SaaS,FR,Mid-market,Mid-market,False,marco.ricci,2023-10-28
+CUST-0068,Veneziano SPA,Manufacturing,PL,SMB,SMB,False,elena.russo,2024-12-15
+CUST-0069,"Mazzini, Bettoni e Benigni s.r.l.",Fintech,DE,Enterprise,Enterprise,False,marco.ricci,2024-06-26
+CUST-0070,"Turchi, Cristoforetti e Bettin SPA",SaaS,DE,SMB,SMB,False,sara.conti,2024-05-21
+CUST-0071,Bombieri SPA,Healthcare,FR,Enterprise,Enterprise,False,marco.ricci,2024-05-31
+CUST-0072,"Gibilisco, Pininfarina e Casarin e figli",SaaS,PL,Micro,Micro,False,luca.marino,2021-03-31
+CUST-0073,"Barsanti, Bragadin e Pucci Group",Consulting,FR,SMB,SMB,False,sara.conti,2024-08-07
+CUST-0074,Fittipaldi-Mazzocchi e figli,Healthcare,ES,SMB,SMB,False,sara.conti,2021-07-24
+CUST-0075,Petrassi-Chechi Group,Logistics,FR,Micro,Micro,False,elena.russo,2022-03-29
+CUST-0076,Mercadante-Bonolis SPA,E-commerce,FR,Mid-market,Mid-market,False,marco.ricci,2023-04-04
+CUST-0077,Zanzi-Calgari SPA,Media,FR,Micro,Mid-market,True,sara.conti,2022-06-12
+CUST-0078,"Fusani, Tognazzi e Impastato e figli",Retail,DE,Micro,Micro,False,sara.conti,2020-03-31
+CUST-0079,Bombieri-Gottardi Group,Healthcare,FR,Micro,Enterprise,True,luca.marino,2020-05-23
+CUST-0080,Cuda-Roncalli Group,E-commerce,UK,Mid-market,Mid-market,False,sara.conti,2022-11-04
+CUST-0081,"Trupiano, Alfonsi e Vismara Group",Manufacturing,ES,Mid-market,Mid-market,False,sara.conti,2023-02-09
+CUST-0082,"Cammarata, Chindamo e Iannucci SPA",Media,UK,SMB,SMB,False,marco.ricci,2023-06-14
+CUST-0083,Visconti e figli,SaaS,FR,Mid-market,Mid-market,False,sara.conti,2021-03-06
+CUST-0084,Lombardo-Fracci Group,Retail,UK,Enterprise,Enterprise,False,sara.conti,2022-08-10
+CUST-0085,Iannotti s.r.l.,Healthcare,NL,Enterprise,Enterprise,False,luca.marino,2024-06-13
+CUST-0086,Berengario-Cabibbo s.r.l.,Logistics,NL,SMB,SMB,False,elena.russo,2021-11-17
+CUST-0087,Battisti-Agazzi Group,Healthcare,UK,Micro,Micro,False,sara.conti,2021-04-05
+CUST-0088,Iacobucci e figli,SaaS,DE,SMB,SMB,False,luca.marino,2023-06-05
+CUST-0089,"Rossini, Villadicani e Renier SPA",Retail,DE,Micro,Micro,False,luca.marino,2022-10-09
+CUST-0090,Borromini e figli,SaaS,PL,Enterprise,Enterprise,False,giulia.ferrari,2024-05-13
+CUST-0091,"Barcaccia, Pacomio e Viola e figli",Education,ES,Enterprise,Enterprise,False,giulia.ferrari,2023-02-15
+CUST-0092,Ceravolo-Bassi Group,E-commerce,ES,SMB,SMB,False,marco.ricci,2024-06-29
+CUST-0093,Barsanti-Nugnes e figli,Education,NL,Enterprise,Enterprise,False,sara.conti,2024-03-26
+CUST-0094,"Greco, Camilleri e Nitto s.r.l.",Education,ES,Enterprise,Enterprise,False,elena.russo,2022-07-02
+CUST-0095,"Costalonga, Ginese e Cutuli e figli",Consulting,ES,SMB,SMB,False,sara.conti,2024-03-19
+CUST-0096,Armellini-Errani Group,Logistics,PL,SMB,SMB,False,elena.russo,2022-09-19
+CUST-0097,Grassi-Interiano e figli,E-commerce,UK,SMB,SMB,False,sara.conti,2021-04-25
+CUST-0098,"Cannizzaro, Pasolini e Barozzi s.r.l.",Education,IT,Mid-market,Mid-market,False,marco.ricci,2020-11-04
+CUST-0099,Filippelli s.r.l.,Fintech,UK,SMB,SMB,False,marco.ricci,2020-05-11
+CUST-0100,Marino-Gentilini e figli,Education,ES,Enterprise,Enterprise,False,luca.marino,2020-05-07
+CUST-0101,Ferragni s.r.l.,Media,PL,SMB,SMB,False,elena.russo,2023-11-25
+CUST-0102,Ligorio-Bonanno Group,Retail,ES,Micro,Micro,False,luca.marino,2020-01-13
+CUST-0103,Tommaseo-Piazzi Group,Media,PL,Mid-market,Mid-market,False,luca.marino,2023-01-07
+CUST-0104,Carpaccio Group,Logistics,ES,SMB,SMB,False,luca.marino,2020-02-29
+CUST-0105,Impastato SPA,Media,UK,Enterprise,Enterprise,False,marco.ricci,2024-09-17
+CUST-0106,Rizzo Group,Retail,NL,Enterprise,Enterprise,False,giulia.ferrari,2022-03-17
+CUST-0107,"Mazzini, Roero e Tornatore SPA",Media,DE,Micro,Micro,False,luca.marino,2021-01-07
+CUST-0108,Favata-Gualandi SPA,Manufacturing,DE,Micro,Micro,False,luca.marino,2021-10-31
+CUST-0109,"Roero, Abbagnale e Travia e figli",Media,FR,Mid-market,Mid-market,False,luca.marino,2021-05-31
+CUST-0110,Ricolfi-Bonatti Group,Education,IT,Micro,Micro,False,sara.conti,2021-04-04
+CUST-0111,"Mazzini, Cattaneo e Mantegna Group",SaaS,PL,Micro,Micro,False,giulia.ferrari,2021-05-21
+CUST-0112,"Pizzetti, Mogherini e Pinamonte Group",Retail,DE,SMB,SMB,False,marco.ricci,2020-09-15
+CUST-0113,"Cendron, Fermi e Puglisi s.r.l.",Retail,DE,Enterprise,Enterprise,False,luca.marino,2023-12-03
+CUST-0114,"Draghi, Manunta e Pisani SPA",Fintech,NL,Mid-market,Mid-market,False,elena.russo,2024-03-11
+CUST-0115,Ludovisi-Foà s.r.l.,Fintech,FR,Micro,Micro,False,giulia.ferrari,2023-03-31
+CUST-0116,"Milanesi, Scarpetta e Rossini s.r.l.",Retail,UK,Micro,Micro,False,luca.marino,2022-03-23
+CUST-0117,"Fuseli, Torlonia e Sforza e figli",Healthcare,IT,SMB,SMB,False,sara.conti,2024-10-07
+CUST-0118,"Brenna, Loredan e Totino Group",Retail,PL,Micro,Micro,False,giulia.ferrari,2021-12-12
+CUST-0119,Gibilisco Group,E-commerce,NL,Enterprise,Enterprise,False,sara.conti,2020-01-26
+CUST-0120,Filangieri e figli,E-commerce,ES,Enterprise,Enterprise,False,sara.conti,2023-07-25
+CUST-0121,Beffa e figli,Media,DE,Enterprise,Enterprise,False,elena.russo,2023-08-25
+CUST-0122,Bonomo-Santoro s.r.l.,Education,PL,Mid-market,Mid-market,False,luca.marino,2022-08-10
+CUST-0123,"Ferrari, Pastine e Tagliafierro s.r.l.",Retail,FR,Enterprise,Enterprise,False,sara.conti,2024-10-10
+CUST-0124,Comisso SPA,E-commerce,FR,SMB,SMB,False,luca.marino,2021-05-14
+CUST-0125,Raurica e figli,Media,FR,Enterprise,Enterprise,False,giulia.ferrari,2022-10-09
+CUST-0126,Trapani s.r.l.,Healthcare,FR,Mid-market,Mid-market,False,sara.conti,2021-11-28
+CUST-0127,Volterra e figli,Logistics,NL,Mid-market,Mid-market,False,giulia.ferrari,2022-11-24
+CUST-0128,Saraceno e figli,Media,ES,SMB,SMB,False,elena.russo,2024-04-01
+CUST-0129,Turchi-Zaccardo Group,Consulting,ES,SMB,SMB,False,giulia.ferrari,2020-07-09
+CUST-0130,Tiepolo-Regge s.r.l.,Healthcare,FR,Mid-market,Mid-market,False,elena.russo,2022-01-25
+CUST-0131,Sibilia s.r.l.,Manufacturing,ES,Enterprise,Enterprise,False,elena.russo,2021-11-08
+CUST-0132,Gramsci-Lerner s.r.l.,Logistics,FR,Mid-market,Mid-market,False,sara.conti,2021-04-17
+CUST-0133,"Giovine, Leoncavallo e Rosselli SPA",Manufacturing,IT,Micro,Micro,False,elena.russo,2024-04-09
+CUST-0134,"Lucciano, Gianvecchio e Lancisi Group",Consulting,FR,SMB,SMB,False,elena.russo,2024-04-05
+CUST-0135,Vecoli-Bottigliero e figli,Healthcare,FR,Mid-market,Mid-market,False,marco.ricci,2022-01-09
+CUST-0136,Gianinazzi s.r.l.,Education,DE,SMB,SMB,False,sara.conti,2020-04-03
+CUST-0137,"Corradi, Gabba e Boccherini s.r.l.",Fintech,UK,Micro,Micro,False,luca.marino,2020-07-29
+CUST-0138,Montalti-Venier s.r.l.,Consulting,ES,Micro,Micro,False,luca.marino,2021-11-28
+CUST-0139,Blasi-Foconi s.r.l.,Logistics,PL,SMB,SMB,False,luca.marino,2020-08-21
+CUST-0140,Antonucci-Parpinel s.r.l.,E-commerce,NL,Micro,Micro,False,giulia.ferrari,2020-11-06
+CUST-0141,Nievo Group,Logistics,IT,SMB,SMB,False,marco.ricci,2020-08-30
+CUST-0142,Pucci-Varano e figli,Retail,DE,Enterprise,Enterprise,False,elena.russo,2022-02-18
+CUST-0143,Galilei-Lattuada s.r.l.,Logistics,PL,Enterprise,Enterprise,False,elena.russo,2022-05-28
+CUST-0144,Badoer-Pellegrini Group,SaaS,NL,Mid-market,Mid-market,False,giulia.ferrari,2024-04-11
+CUST-0145,"Pirandello, Deledda e Schicchi e figli",Logistics,UK,SMB,SMB,False,giulia.ferrari,2020-11-17
+CUST-0146,"Udinese, Babati e Pertile SPA",E-commerce,DE,SMB,SMB,False,giulia.ferrari,2022-04-16
+CUST-0147,Renzi e figli,Consulting,FR,Enterprise,Enterprise,False,giulia.ferrari,2021-04-19
+CUST-0148,Faggiani-Benigni Group,Consulting,IT,Mid-market,Mid-market,False,marco.ricci,2021-06-25
+CUST-0149,Monaco-Franscini s.r.l.,Education,DE,SMB,SMB,False,marco.ricci,2021-06-28
+CUST-0150,Moresi-Parini Group,Fintech,PL,SMB,SMB,False,sara.conti,2023-05-03
+CUST-0151,Grifeo-Bragadin s.r.l.,Consulting,UK,Mid-market,Mid-market,False,sara.conti,2023-12-04
+CUST-0152,Vattimo SPA,Education,NL,Enterprise,Enterprise,False,luca.marino,2022-06-15
+CUST-0153,Garzoni-Bombieri SPA,Media,UK,Micro,Micro,False,sara.conti,2023-05-21
+CUST-0154,Gramsci e figli,Retail,NL,SMB,Mid-market,True,giulia.ferrari,2024-04-15
+CUST-0155,Corradi e figli,Fintech,ES,Mid-market,Mid-market,False,elena.russo,2023-08-27
+CUST-0156,Sforza SPA,Fintech,NL,Enterprise,Enterprise,False,luca.marino,2023-07-24
+CUST-0157,"Gaito, Scarpetta e Guarato Group",Consulting,FR,Enterprise,Enterprise,False,luca.marino,2021-11-13
+CUST-0158,Carocci e figli,Fintech,FR,Mid-market,Mid-market,False,luca.marino,2023-11-21
+CUST-0159,Cannizzaro-Asprucci Group,Media,PL,Enterprise,Enterprise,False,elena.russo,2020-03-16
+CUST-0160,"Panicucci, Petrucci e Fieramosca SPA",Logistics,FR,Enterprise,Enterprise,False,giulia.ferrari,2024-05-01
+CUST-0161,"Golino, Camanni e Manzoni SPA",SaaS,UK,Enterprise,Enterprise,False,elena.russo,2022-08-04
+CUST-0162,"Basadonna, Napolitano e Tuzzolino s.r.l.",Education,FR,Enterprise,Enterprise,False,elena.russo,2024-03-29
+CUST-0163,"Paganini, Bompiani e Tognazzi Group",SaaS,DE,Enterprise,Enterprise,False,sara.conti,2023-01-29
+CUST-0164,Pugliese s.r.l.,Consulting,UK,SMB,SMB,False,luca.marino,2020-09-05
+CUST-0165,Rismondo Group,Retail,PL,Micro,Micro,False,marco.ricci,2023-12-24
+CUST-0166,"Savorgnan, Correr e Rocca e figli",SaaS,NL,SMB,SMB,False,luca.marino,2020-07-09
+CUST-0167,"Trentin, Jovinelli e Varano s.r.l.",E-commerce,ES,SMB,SMB,False,giulia.ferrari,2023-08-19
+CUST-0168,Roccabonella-Inzaghi Group,Logistics,NL,SMB,SMB,False,sara.conti,2022-04-30
+CUST-0169,Broggini Group,Healthcare,ES,Enterprise,Enterprise,False,elena.russo,2020-10-23
+CUST-0170,Gori-Scarpa s.r.l.,Retail,NL,Enterprise,Enterprise,False,marco.ricci,2024-11-04
+CUST-0171,Bacosi-Tagliafierro Group,Media,FR,Micro,Micro,False,elena.russo,2021-07-01
+CUST-0172,Squarcione e figli,Logistics,PL,Micro,Micro,False,elena.russo,2023-04-02
+CUST-0173,Guicciardini-Morricone Group,Consulting,NL,Enterprise,Enterprise,False,luca.marino,2021-12-07
+CUST-0174,"Leopardi, Vivaldi e Alonzi e figli",Education,ES,Mid-market,Mid-market,False,luca.marino,2021-10-21
+CUST-0175,Goldoni s.r.l.,Healthcare,NL,SMB,SMB,False,luca.marino,2021-04-23
+CUST-0176,Vitturi-Giunti s.r.l.,Consulting,UK,Enterprise,Enterprise,False,luca.marino,2022-03-01
+CUST-0177,"Stradivari, Sagnelli e Antonelli SPA",SaaS,DE,SMB,SMB,False,elena.russo,2023-04-23
+CUST-0178,Gangemi-Pirandello e figli,Consulting,IT,Mid-market,Mid-market,False,elena.russo,2022-07-24
+CUST-0179,Pacillo-Sforza Group,Media,PL,Micro,Micro,False,marco.ricci,2020-06-02
+CUST-0180,Vigliotti-Montalti Group,Logistics,FR,Enterprise,Enterprise,False,elena.russo,2023-11-19
+CUST-0181,"Sansoni, Juvara e Marsili Group",Manufacturing,PL,Enterprise,Enterprise,False,elena.russo,2022-02-17
+CUST-0182,Casini e figli,Consulting,PL,Mid-market,Mid-market,False,elena.russo,2020-03-14
+CUST-0183,Casalodi-Valentino e figli,Logistics,DE,Micro,Micro,False,giulia.ferrari,2022-06-07
+CUST-0184,Gagliano s.r.l.,E-commerce,ES,Micro,Micro,False,marco.ricci,2023-11-22
+CUST-0185,Trezzini-Longhena SPA,SaaS,FR,Mid-market,Mid-market,False,giulia.ferrari,2021-08-23
+CUST-0186,Malatesta e figli,Fintech,DE,Mid-market,Mid-market,False,elena.russo,2022-04-23
+CUST-0187,Errani-Marazzi SPA,E-commerce,NL,SMB,SMB,False,luca.marino,2023-06-23
+CUST-0188,"Udinese, Celentano e Leonardi SPA",Retail,DE,SMB,SMB,False,marco.ricci,2022-08-02
+CUST-0189,Visconti Group,SaaS,PL,Mid-market,Mid-market,False,luca.marino,2021-08-12
+CUST-0190,"Ceci, Stradivari e Camilleri SPA",Manufacturing,NL,SMB,SMB,False,sara.conti,2023-08-01
+CUST-0191,"Lovato, Seddio e Soderini s.r.l.",Consulting,PL,Enterprise,Enterprise,False,sara.conti,2021-02-11
+CUST-0192,Fallaci-Bergoglio Group,E-commerce,DE,Enterprise,Enterprise,False,luca.marino,2023-03-17
+CUST-0193,Carnera-Bocelli s.r.l.,Logistics,IT,Mid-market,Mid-market,False,luca.marino,2021-07-16
+CUST-0194,Borgia-Bernetti e figli,SaaS,NL,Micro,Micro,False,luca.marino,2024-09-01
+CUST-0195,Zanichelli Group,Healthcare,NL,Mid-market,Mid-market,False,sara.conti,2021-03-24
+CUST-0196,Grassi SPA,Fintech,UK,SMB,SMB,False,giulia.ferrari,2023-07-09
+CUST-0197,"Pratesi, Gelli e Tresoldi s.r.l.",Consulting,IT,Micro,Micro,False,elena.russo,2022-01-17
+CUST-0198,Rubbia-Malipiero s.r.l.,Logistics,FR,SMB,SMB,False,luca.marino,2020-12-25
+CUST-0199,Bignami-Calbo e figli,Education,FR,SMB,SMB,False,elena.russo,2022-10-24
+CUST-0200,"Franceschi, Iannucci e Bova e figli",Logistics,PL,Mid-market,Mid-market,False,luca.marino,2024-07-09
+CUST-0201,Dovara SPA,Manufacturing,PL,Mid-market,Mid-market,False,giulia.ferrari,2022-08-17
+CUST-0202,Acerbi s.r.l.,Healthcare,PL,Micro,Micro,False,luca.marino,2024-09-28
+CUST-0203,Segni-Maderno SPA,Media,IT,Mid-market,Mid-market,False,sara.conti,2023-01-03
+CUST-0204,Luria Group,Logistics,NL,Micro,Micro,False,luca.marino,2024-08-11
+CUST-0205,"Sansoni, Bondumier e Giannotti Group",Healthcare,ES,Mid-market,Mid-market,False,giulia.ferrari,2023-06-22
+CUST-0206,"Ficino, Raurica e Carosone e figli",Healthcare,UK,Mid-market,Mid-market,False,giulia.ferrari,2023-07-25
+CUST-0207,"Contarini, Infantino e Coardi SPA",Logistics,UK,Enterprise,Enterprise,False,luca.marino,2020-08-26
+CUST-0208,Delle Group,SaaS,FR,SMB,SMB,False,luca.marino,2020-08-25
+CUST-0209,"Lussu, Rosmini e Catenazzi s.r.l.",Education,DE,Micro,Micro,False,luca.marino,2022-07-18
+CUST-0210,"Marenzio, Pinamonte e Lanfranchi s.r.l.",Education,ES,Mid-market,Mid-market,False,elena.russo,2024-02-29
+CUST-0211,Botticelli-Barsanti s.r.l.,E-commerce,PL,SMB,SMB,False,luca.marino,2023-06-14
+CUST-0212,"Mimun, Greggio e Asprucci SPA",Logistics,IT,Enterprise,Enterprise,False,sara.conti,2021-03-20
+CUST-0213,Argan Group,Healthcare,PL,Enterprise,Enterprise,False,sara.conti,2020-07-22
+CUST-0214,"Bartoli, Dulbecco e Segrè s.r.l.",Manufacturing,IT,Mid-market,Mid-market,False,luca.marino,2021-07-19
+CUST-0215,Fabrizi-Roccabonella s.r.l.,Consulting,IT,SMB,SMB,False,marco.ricci,2023-08-07
+CUST-0216,Segni Group,Manufacturing,DE,Micro,Micro,False,marco.ricci,2024-05-30
+CUST-0217,Montecchi-Micheletti SPA,Education,DE,SMB,SMB,False,elena.russo,2021-03-18
+CUST-0218,Monicelli s.r.l.,Fintech,PL,SMB,SMB,False,elena.russo,2020-01-06
+CUST-0219,"Taliercio, Luria e Piccio SPA",Fintech,DE,Mid-market,Mid-market,False,elena.russo,2021-05-28
+CUST-0220,Brunelleschi-Medici Group,SaaS,DE,SMB,SMB,False,giulia.ferrari,2022-01-03
+CUST-0221,Carriera-Piovani SPA,SaaS,DE,SMB,SMB,False,sara.conti,2020-04-17
+CUST-0222,"Venier, Scamarcio e Ponti SPA",Education,IT,SMB,SMB,False,giulia.ferrari,2022-09-02
+CUST-0223,Travaglia Group,Education,NL,Enterprise,Enterprise,False,giulia.ferrari,2022-07-14
+CUST-0224,"Tarantini, Roth e Bergoglio e figli",SaaS,UK,SMB,SMB,False,elena.russo,2021-09-09
+CUST-0225,Vezzali-Chechi Group,SaaS,IT,Enterprise,Enterprise,False,luca.marino,2024-10-01
+CUST-0226,Spadafora-Cassarà SPA,E-commerce,ES,Enterprise,Enterprise,False,luca.marino,2020-05-30
+CUST-0227,"Giradello, Cugia e Mattarella SPA",Fintech,IT,Micro,Micro,False,marco.ricci,2021-07-17
+CUST-0228,"Pizzamano, Caboto e Gasperi SPA",Retail,NL,Mid-market,Mid-market,False,sara.conti,2022-07-18
+CUST-0229,Casadei-Cossiga s.r.l.,E-commerce,PL,Enterprise,Enterprise,False,elena.russo,2024-01-16
+CUST-0230,"Maffei, Tomei e Leblanc s.r.l.",Healthcare,ES,SMB,SMB,False,sara.conti,2024-08-21
+CUST-0231,Sermonti-Gori s.r.l.,E-commerce,FR,Enterprise,Enterprise,False,luca.marino,2021-10-02
+CUST-0232,"Collodi, Passalacqua e Federici e figli",Fintech,UK,Mid-market,Mid-market,False,luca.marino,2020-05-17
+CUST-0233,Leopardi s.r.l.,E-commerce,ES,Micro,Micro,False,giulia.ferrari,2024-03-04
+CUST-0234,Tomaselli-Interminei SPA,Education,IT,Mid-market,Mid-market,False,elena.russo,2023-02-24
+CUST-0235,Mancini-Stein e figli,Media,FR,Mid-market,Mid-market,False,luca.marino,2024-11-12
+CUST-0236,Vasari-Sorrentino Group,Retail,FR,Micro,Micro,False,sara.conti,2020-07-31
+CUST-0237,Villarosa-Vento s.r.l.,Consulting,DE,SMB,SMB,False,giulia.ferrari,2021-12-18
+CUST-0238,Milanesi-Farnese e figli,Logistics,NL,Mid-market,Mid-market,False,marco.ricci,2024-07-11
+CUST-0239,"Pasqua, Giannotti e Polani SPA",Retail,NL,Enterprise,Enterprise,False,elena.russo,2020-02-23
+CUST-0240,Serraglio-Parri s.r.l.,Logistics,FR,Enterprise,Mid-market,True,sara.conti,2020-01-13
+CUST-0241,"Corcos, Taliercio e Barese e figli",Retail,UK,SMB,SMB,False,luca.marino,2020-05-22
+CUST-0242,"Montanariello, Callegari e Rossellini SPA",SaaS,IT,SMB,SMB,False,elena.russo,2021-03-16
+CUST-0243,"Saracino, Anguissola e Collina s.r.l.",Manufacturing,DE,Enterprise,Enterprise,False,sara.conti,2021-09-30
+CUST-0244,"Costalonga, Borromeo e Seddio Group",Retail,NL,Mid-market,Mid-market,False,giulia.ferrari,2024-12-14
+CUST-0245,Petruzzi-Botticelli Group,Retail,IT,Micro,Micro,False,giulia.ferrari,2021-07-11
+CUST-0246,"Ubaldi, Parmitano e Mercalli s.r.l.",Consulting,NL,Enterprise,Enterprise,False,luca.marino,2022-04-28
+CUST-0247,"Barcaccia, Bombieri e Gianvecchio Group",Education,IT,Mid-market,Mid-market,False,sara.conti,2022-05-30
+CUST-0248,Buonauro s.r.l.,Retail,ES,Micro,Micro,False,elena.russo,2023-09-28
+CUST-0249,Callegari s.r.l.,Media,NL,Mid-market,Mid-market,False,giulia.ferrari,2020-01-16
+CUST-0250,Manolesso SPA,Healthcare,PL,SMB,SMB,False,marco.ricci,2024-04-14
+CUST-0251,Mocenigo SPA,E-commerce,IT,Mid-market,Mid-market,False,luca.marino,2024-03-09
+CUST-0252,Offredi-Panatta s.r.l.,Media,NL,Enterprise,Enterprise,False,marco.ricci,2022-10-21
+CUST-0253,Gottardi s.r.l.,SaaS,ES,Mid-market,Mid-market,False,giulia.ferrari,2022-07-30
+CUST-0254,"Errigo, Donati e Dulbecco SPA",Retail,ES,Micro,Micro,False,elena.russo,2022-04-08
+CUST-0255,"Pasolini, Giusti e Tanzini e figli",Media,IT,Enterprise,Enterprise,False,sara.conti,2020-12-17
+CUST-0256,Scalera Group,Manufacturing,IT,Enterprise,Enterprise,False,luca.marino,2024-09-25
+CUST-0257,Gualtieri-Aloisio s.r.l.,Retail,ES,Micro,Micro,False,elena.russo,2020-06-10
+CUST-0258,Vergerio-Cuda SPA,Manufacturing,DE,Enterprise,Enterprise,False,sara.conti,2024-05-14
+CUST-0259,Musatti-Mannoia s.r.l.,E-commerce,NL,SMB,SMB,False,elena.russo,2021-02-01
+CUST-0260,"Greggio, Saracino e Marangoni e figli",Fintech,DE,Mid-market,Mid-market,False,giulia.ferrari,2020-10-26
+CUST-0261,Soranzo-Canetta e figli,Retail,DE,Mid-market,Mid-market,False,giulia.ferrari,2020-12-28
+CUST-0262,Oliboni-Malaparte Group,Retail,PL,Enterprise,Enterprise,False,elena.russo,2022-07-08
+CUST-0263,Petrassi Group,Manufacturing,DE,Mid-market,Mid-market,False,luca.marino,2020-05-19
+CUST-0264,Zichichi SPA,Logistics,PL,Enterprise,Enterprise,False,sara.conti,2023-04-26
+CUST-0265,"Tamburi, Luciani e Giammusso Group",E-commerce,FR,Micro,Micro,False,luca.marino,2022-07-14
+CUST-0266,Favata Group,Logistics,IT,Micro,Micro,False,giulia.ferrari,2023-06-13
+CUST-0267,"Ciani, Cagnin e Barracco Group",Education,PL,Enterprise,Enterprise,False,giulia.ferrari,2022-07-10
+CUST-0268,Balotelli-Ossani e figli,Consulting,NL,SMB,SMB,False,marco.ricci,2020-05-06
+CUST-0269,Malacarne Group,Manufacturing,UK,Enterprise,Enterprise,False,giulia.ferrari,2022-10-30
+CUST-0270,"Prada, Duodo e Filzi e figli",Consulting,ES,Micro,SMB,True,elena.russo,2022-12-06
+CUST-0271,"Ostinelli, Turchi e Tassoni Group",Logistics,ES,SMB,SMB,False,luca.marino,2024-05-05
+CUST-0272,Guarneri s.r.l.,SaaS,PL,Mid-market,Mid-market,False,sara.conti,2020-05-14
+CUST-0273,Morgagni-Carosone s.r.l.,Media,FR,Mid-market,Mid-market,False,sara.conti,2024-01-22
+CUST-0274,Cimini e figli,Retail,UK,SMB,SMB,False,marco.ricci,2021-12-17
+CUST-0275,"Petrucelli, Volterra e Ostinelli SPA",Media,DE,Mid-market,Mid-market,False,elena.russo,2023-12-22
+CUST-0276,Angeli-Iannucci SPA,Media,UK,Micro,Micro,False,sara.conti,2024-07-23
+CUST-0277,Pacetti-Iacobucci s.r.l.,Education,IT,SMB,SMB,False,luca.marino,2022-11-07
+CUST-0278,"Pagnotto, Cannizzaro e Giannotti s.r.l.",Fintech,DE,Enterprise,Mid-market,True,sara.conti,2024-04-18
+CUST-0279,Zamorani Group,Fintech,DE,Enterprise,Enterprise,False,giulia.ferrari,2021-08-28
+CUST-0280,"Gangemi, Bocca e Scarlatti Group",Education,PL,Micro,Micro,False,elena.russo,2020-03-18
+CUST-0281,"Pizzetti, Carullo e Cilibrasi SPA",Retail,DE,Mid-market,Mid-market,False,elena.russo,2022-02-10
+CUST-0282,Marinetti s.r.l.,Retail,PL,SMB,SMB,False,marco.ricci,2024-01-16
+CUST-0283,Cagnotto e figli,Manufacturing,UK,Enterprise,Enterprise,False,marco.ricci,2022-06-28
+CUST-0284,"Chittolini, Pedroni e Sansoni Group",Consulting,DE,Mid-market,Mid-market,False,elena.russo,2021-05-04
+CUST-0285,"Vecoli, Pucci e Costalonga s.r.l.",Consulting,PL,Mid-market,Mid-market,False,marco.ricci,2022-01-23
+CUST-0286,"Calarco, Stein e Pizzamano Group",Logistics,PL,Enterprise,Enterprise,False,luca.marino,2022-10-26
+CUST-0287,Paganini e figli,Healthcare,PL,Enterprise,Enterprise,False,elena.russo,2020-10-10
+CUST-0288,Ruggieri-Gilardoni Group,Consulting,PL,Mid-market,Mid-market,False,sara.conti,2023-02-09
+CUST-0289,Pace Group,Education,PL,Micro,Micro,False,giulia.ferrari,2021-08-06
+CUST-0290,Pezzali Group,Logistics,ES,Micro,Micro,False,elena.russo,2020-10-28
+CUST-0291,Castellitto s.r.l.,Healthcare,PL,Enterprise,Enterprise,False,luca.marino,2024-12-16
+CUST-0292,Franzese SPA,Media,IT,Mid-market,Mid-market,False,luca.marino,2022-10-25
+CUST-0293,Montesano e figli,E-commerce,FR,Mid-market,Mid-market,False,marco.ricci,2020-02-27
+CUST-0294,Zeffirelli e figli,Manufacturing,PL,Mid-market,Mid-market,False,marco.ricci,2020-10-08
+CUST-0295,Vismara e figli,Consulting,UK,Micro,Micro,False,marco.ricci,2024-04-03
+CUST-0296,"Gaggini, Giannone e Mondaini e figli",SaaS,IT,Enterprise,Enterprise,False,giulia.ferrari,2021-06-08
+CUST-0297,"Acerbi, Lerner e Collodi e figli",Education,UK,SMB,SMB,False,elena.russo,2022-12-16
+CUST-0298,"Gregori, Druso e Capone SPA",Logistics,DE,Enterprise,Enterprise,False,sara.conti,2020-09-06
+CUST-0299,Anguillara Group,Retail,ES,Micro,Micro,False,giulia.ferrari,2020-08-15
+CUST-0300,Moccia SPA,SaaS,UK,Enterprise,Enterprise,False,elena.russo,2023-03-23
+CUST-0301,Impastato SPA,Logistics,ES,SMB,SMB,False,giulia.ferrari,2023-06-13
+CUST-0302,Pulci SPA,Media,DE,Mid-market,Mid-market,False,giulia.ferrari,2022-12-08
+CUST-0303,"Boccaccio, Simeoni e Sagredo Group",Education,NL,Mid-market,Mid-market,False,elena.russo,2024-05-29
+CUST-0304,"Cantimori, Salvo e Tencalla e figli",Consulting,IT,Micro,Micro,False,luca.marino,2022-02-03
+CUST-0305,"Battaglia, Tremonti e Manzoni s.r.l.",Manufacturing,PL,Mid-market,Mid-market,False,giulia.ferrari,2021-12-07
+CUST-0306,"Bajamonti, Bignardi e Soderini s.r.l.",E-commerce,PL,SMB,SMB,False,elena.russo,2024-02-14
+CUST-0307,Cannizzaro-Storladi s.r.l.,Manufacturing,NL,Mid-market,Mid-market,False,sara.conti,2024-07-24
+CUST-0308,Bottigliero Group,Consulting,UK,SMB,SMB,False,luca.marino,2023-07-17
+CUST-0309,"Comolli, Bodoni e Ceci Group",E-commerce,UK,SMB,SMB,False,luca.marino,2020-03-16
+CUST-0310,"Vespucci, Modiano e Parri Group",Healthcare,IT,Mid-market,Mid-market,False,sara.conti,2021-09-27
+CUST-0311,Togliatti-Ricci SPA,Education,ES,Enterprise,Enterprise,False,sara.conti,2020-03-15
+CUST-0312,"Carocci, Villadicani e Gabrieli s.r.l.",SaaS,PL,SMB,SMB,False,sara.conti,2021-07-13
+CUST-0313,Geraci-Porcellato Group,Media,ES,Micro,Micro,False,luca.marino,2022-03-02
+CUST-0314,Piacentini-Praga SPA,Consulting,UK,Mid-market,Mid-market,False,luca.marino,2022-01-22
+CUST-0315,Renault-Mazzeo Group,Media,IT,Mid-market,Mid-market,False,luca.marino,2023-05-18
+CUST-0316,Corradi-Sgarbi SPA,Manufacturing,IT,SMB,SMB,False,giulia.ferrari,2021-11-02
+CUST-0317,Bresciani SPA,Retail,UK,Mid-market,Mid-market,False,luca.marino,2020-12-07
+CUST-0318,Caffarelli-Palmisano e figli,SaaS,UK,Enterprise,Enterprise,False,sara.conti,2023-06-13
+CUST-0319,"Bianchini, Zampa e Zampa Group",SaaS,IT,Enterprise,Enterprise,False,luca.marino,2022-01-14
+CUST-0320,"Castellitto, Polani e Nitto s.r.l.",Fintech,PL,SMB,SMB,False,elena.russo,2023-10-20
+CUST-0321,"Bergoglio, Lupo e Mazzanti Group",Healthcare,PL,SMB,Enterprise,True,sara.conti,2022-01-11
+CUST-0322,Tomaselli e figli,SaaS,NL,Enterprise,Enterprise,False,marco.ricci,2023-10-22
+CUST-0323,Sonnino e figli,Manufacturing,ES,Enterprise,Enterprise,False,giulia.ferrari,2023-03-21
+CUST-0324,Nicoletti Group,Media,FR,SMB,SMB,False,sara.conti,2021-05-26
+CUST-0325,Ligorio e figli,Consulting,NL,SMB,Micro,True,luca.marino,2023-02-24
+CUST-0326,Zamengo-Volta SPA,Logistics,UK,Micro,Micro,False,luca.marino,2021-03-15
+CUST-0327,"Interminei, Badoer e Esposito Group",Consulting,DE,Mid-market,Mid-market,False,giulia.ferrari,2020-10-04
+CUST-0328,"Mascheroni, Morosini e Nicolini SPA",Consulting,IT,Micro,Micro,False,sara.conti,2023-09-29
+CUST-0329,Cociarelli s.r.l.,Education,NL,Mid-market,Mid-market,False,sara.conti,2024-12-30
+CUST-0330,Civaschi SPA,Fintech,PL,Mid-market,Mid-market,False,sara.conti,2022-11-07
+CUST-0331,Turchetta e figli,Healthcare,PL,SMB,SMB,False,marco.ricci,2021-04-29
+CUST-0332,Puccini-Sansoni Group,Retail,FR,Micro,Enterprise,True,luca.marino,2024-07-03
+CUST-0333,Padovano Group,E-commerce,IT,SMB,SMB,False,sara.conti,2022-03-26
+CUST-0334,"Mocenigo, Zoppetti e Brenna SPA",Media,PL,Enterprise,Enterprise,False,elena.russo,2020-05-31
+CUST-0335,Cristoforetti SPA,E-commerce,ES,SMB,SMB,False,luca.marino,2023-10-24
+CUST-0336,"Bragadin, Lanfranchi e Ruberto s.r.l.",Education,UK,Mid-market,Mid-market,False,elena.russo,2021-01-07
+CUST-0337,Roth-Porzio Group,SaaS,PL,SMB,SMB,False,giulia.ferrari,2022-11-27
+CUST-0338,Toscani SPA,Fintech,FR,SMB,SMB,False,marco.ricci,2021-12-09
+CUST-0339,Riccati-Capuana Group,Logistics,DE,Mid-market,Mid-market,False,elena.russo,2021-07-16
+CUST-0340,"Spinelli, Trombetta e Mascagni SPA",Retail,NL,SMB,SMB,False,giulia.ferrari,2022-10-26
+CUST-0341,Petralli SPA,Retail,DE,SMB,SMB,False,marco.ricci,2023-09-11
+CUST-0342,Fittipaldi Group,Retail,IT,Mid-market,Mid-market,False,giulia.ferrari,2020-06-15
+CUST-0343,Cibin Group,Retail,FR,Micro,Micro,False,marco.ricci,2024-04-19
+CUST-0344,Mondadori-Casarin SPA,SaaS,ES,Enterprise,Enterprise,False,elena.russo,2021-08-16
+CUST-0345,Ricci-Duodo e figli,Media,FR,Mid-market,Mid-market,False,luca.marino,2020-05-29
+CUST-0346,Tutino-Giammusso Group,Media,ES,Micro,Micro,False,luca.marino,2021-02-21
+CUST-0347,Petrucelli SPA,Manufacturing,PL,Mid-market,Mid-market,False,sara.conti,2024-02-12
+CUST-0348,Antonini-Savorgnan SPA,Fintech,PL,Mid-market,Mid-market,False,sara.conti,2022-11-20
+CUST-0349,Riccardi-Pirandello s.r.l.,Consulting,IT,Micro,Micro,False,sara.conti,2022-07-09
+CUST-0350,Carosone-Pirelli SPA,SaaS,FR,SMB,SMB,False,luca.marino,2024-11-04
+CUST-0351,Donà-Sbarbaro Group,Fintech,PL,Enterprise,Enterprise,False,sara.conti,2023-03-29
+CUST-0352,Romagnoli SPA,Fintech,ES,Mid-market,Mid-market,False,elena.russo,2022-08-14
+CUST-0353,Roccabonella s.r.l.,Consulting,IT,Enterprise,Enterprise,False,giulia.ferrari,2022-03-16
+CUST-0354,"Bosurgi, Petrassi e Mastroianni Group",Healthcare,NL,Enterprise,Enterprise,False,sara.conti,2020-04-09
+CUST-0355,Montecchi e figli,Retail,PL,Micro,Micro,False,luca.marino,2021-08-08
+CUST-0356,Tonisto SPA,Media,DE,Micro,Micro,False,sara.conti,2024-01-29
+CUST-0357,"Toninelli, Ferrara e Necci Group",Manufacturing,IT,Mid-market,Mid-market,False,luca.marino,2020-04-14
+CUST-0358,"Comisso, Gilardoni e Camilleri e figli",Logistics,IT,SMB,SMB,False,luca.marino,2022-10-29
+CUST-0359,Fibonacci-Dovara e figli,Logistics,PL,Enterprise,Enterprise,False,elena.russo,2023-10-25
+CUST-0360,"Borromini, Eco e Tafuri s.r.l.",E-commerce,ES,Micro,Micro,False,sara.conti,2024-06-15
+CUST-0361,"Salandra, Zeffirelli e Miniati Group",Manufacturing,PL,Mid-market,Mid-market,False,marco.ricci,2021-02-11
+CUST-0362,Rosselli SPA,SaaS,IT,Enterprise,Enterprise,False,marco.ricci,2024-01-01
+CUST-0363,Roth-Marcacci Group,Education,ES,Mid-market,Mid-market,False,marco.ricci,2023-05-26
+CUST-0364,"Bertoni, Nievo e Tomaselli SPA",Retail,FR,SMB,SMB,False,marco.ricci,2022-03-15
+CUST-0365,Scalfaro-Salvo SPA,Education,PL,Mid-market,Mid-market,False,elena.russo,2022-12-26
+CUST-0366,Pacillo Group,Logistics,ES,Enterprise,Enterprise,False,giulia.ferrari,2022-01-24
+CUST-0367,Bulzoni s.r.l.,Media,NL,Mid-market,Mid-market,False,sara.conti,2024-06-19
+CUST-0368,Vismara-Basadonna s.r.l.,Logistics,UK,Micro,Micro,False,elena.russo,2023-03-28
+CUST-0369,"Farinelli, Migliaccio e Silvestri e figli",Retail,ES,SMB,SMB,False,marco.ricci,2022-12-09
+CUST-0370,Salieri SPA,Healthcare,IT,Enterprise,Enterprise,False,elena.russo,2023-12-05
+CUST-0371,Branciforte-Tiepolo e figli,Consulting,FR,Micro,Micro,False,luca.marino,2020-11-06
+CUST-0372,Granatelli s.r.l.,Media,NL,Enterprise,Enterprise,False,elena.russo,2022-08-23
+CUST-0373,Trevisani-Tresoldi e figli,Education,DE,Micro,Micro,False,elena.russo,2021-10-27
+CUST-0374,Palmisano-Longhena s.r.l.,Manufacturing,DE,Enterprise,Enterprise,False,luca.marino,2022-12-27
+CUST-0375,Moretti-Bernardi Group,Logistics,NL,Mid-market,Mid-market,False,luca.marino,2021-01-28
+CUST-0376,Monicelli SPA,Logistics,DE,SMB,SMB,False,sara.conti,2024-04-28
+CUST-0377,"Peano, Loredan e Grifeo e figli",Consulting,FR,Mid-market,Mid-market,False,luca.marino,2021-12-15
+CUST-0378,Bova-Cipolla Group,Retail,UK,Mid-market,Mid-market,False,elena.russo,2022-02-16
+CUST-0379,Pergolesi-Cerutti SPA,Fintech,FR,Enterprise,Enterprise,False,giulia.ferrari,2021-08-12
+CUST-0380,Zaccardo-Paolini Group,Consulting,UK,Micro,Micro,False,sara.conti,2024-03-10
+CUST-0381,Troisi SPA,Education,FR,Enterprise,Enterprise,False,elena.russo,2023-11-26
+CUST-0382,"Randazzo, Tomasini e Orengo SPA",Retail,UK,Mid-market,Mid-market,False,elena.russo,2021-05-05
+CUST-0383,Mascheroni-Esposito e figli,Education,DE,SMB,SMB,False,marco.ricci,2020-04-17
+CUST-0384,Speri-Ferrabosco e figli,Consulting,IT,Micro,Micro,False,marco.ricci,2020-01-11
+CUST-0385,Costanzi SPA,Consulting,ES,SMB,SMB,False,marco.ricci,2024-03-28
+CUST-0386,Calvo-Tomaselli SPA,SaaS,PL,Mid-market,Mid-market,False,giulia.ferrari,2023-08-28
+CUST-0387,"Morandini, Chechi e Paolini e figli",SaaS,DE,SMB,SMB,False,luca.marino,2024-12-11
+CUST-0388,Fabbri e figli,SaaS,PL,SMB,SMB,False,luca.marino,2024-06-01
+CUST-0389,"Romiti, Battelli e Polani Group",Logistics,IT,Enterprise,Enterprise,False,giulia.ferrari,2021-09-03
+CUST-0390,"Gioberti, Ruggeri e Lucarelli s.r.l.",Manufacturing,FR,Micro,Micro,False,luca.marino,2023-08-06
+CUST-0391,Udinese e figli,Fintech,PL,Enterprise,Enterprise,False,elena.russo,2022-08-16
+CUST-0392,Scotto-Ferrara Group,E-commerce,FR,Mid-market,Mid-market,False,marco.ricci,2024-02-06
+CUST-0393,"Rossetti, Scalfaro e Lombardo s.r.l.",Fintech,IT,Enterprise,Enterprise,False,sara.conti,2024-06-07
+CUST-0394,"Tron, Proietti e Cutrufo e figli",Healthcare,DE,Mid-market,Mid-market,False,elena.russo,2024-10-19
+CUST-0395,"Cicilia, Greggio e Berlusconi s.r.l.",Education,FR,Enterprise,Enterprise,False,giulia.ferrari,2022-03-31
+CUST-0396,Vismara-Camilleri SPA,Fintech,ES,Micro,Micro,False,sara.conti,2021-05-23
+CUST-0397,Brancaccio-Curci Group,Healthcare,ES,Micro,Micro,False,sara.conti,2021-11-06
+CUST-0398,Toselli-Comeriato s.r.l.,Retail,IT,Mid-market,Mid-market,False,sara.conti,2023-08-31
+CUST-0399,Gargallo s.r.l.,SaaS,UK,Mid-market,Mid-market,False,giulia.ferrari,2022-08-11
+CUST-0400,Avogadro-Pozzecco SPA,Education,UK,Mid-market,Mid-market,False,sara.conti,2023-11-14
+CUST-0401,Tebaldi-Paltrinieri e figli,Logistics,FR,Micro,Micro,False,elena.russo,2021-03-28
+CUST-0402,Bragadin-Panatta e figli,Consulting,DE,SMB,SMB,False,luca.marino,2024-03-11
+CUST-0403,Metella SPA,Education,ES,Mid-market,Mid-market,False,elena.russo,2024-06-30
+CUST-0404,"Monti, Comboni e Cibin SPA",Retail,PL,SMB,SMB,False,giulia.ferrari,2022-12-12
+CUST-0405,Sermonti-Cignaroli s.r.l.,Manufacturing,IT,Enterprise,Enterprise,False,elena.russo,2020-08-17
+CUST-0406,Agostini-Botta SPA,Education,DE,Micro,Micro,False,elena.russo,2023-01-04
+CUST-0407,Gadda-Conte s.r.l.,Education,ES,SMB,SMB,False,giulia.ferrari,2023-10-25
+CUST-0408,Luria e figli,Consulting,IT,SMB,SMB,False,elena.russo,2022-07-01
+CUST-0409,Castelli-Bellocchio e figli,Education,ES,Micro,Micro,False,luca.marino,2023-02-28
+CUST-0410,Saragat-Boaga SPA,Logistics,UK,Micro,Micro,False,giulia.ferrari,2022-03-21
+CUST-0411,Valentino-Antelami e figli,Healthcare,NL,Mid-market,Mid-market,False,giulia.ferrari,2020-04-02
+CUST-0412,"Colletti, Maderno e Riccardi SPA",E-commerce,NL,Enterprise,Enterprise,False,giulia.ferrari,2020-05-21
+CUST-0413,"Niscoromni, Giunti e Prati e figli",Fintech,PL,Mid-market,Enterprise,True,marco.ricci,2024-04-17
+CUST-0414,"Briccialdi, Trevisan e Onio SPA",Media,ES,Enterprise,Enterprise,False,luca.marino,2022-02-08
+CUST-0415,"Vercelloni, Tomaselli e Tomaselli SPA",Education,DE,Micro,Micro,False,sara.conti,2020-08-30
+CUST-0416,Segni-Battelli s.r.l.,Media,NL,SMB,SMB,False,marco.ricci,2024-01-30
+CUST-0417,Gritti-Antelami Group,SaaS,FR,SMB,SMB,False,luca.marino,2023-10-11
+CUST-0418,Murri e figli,Healthcare,DE,Enterprise,Enterprise,False,luca.marino,2021-12-09
+CUST-0419,"Cammarata, Montanelli e Chiesa SPA",E-commerce,IT,SMB,SMB,False,luca.marino,2023-06-13
+CUST-0420,Vergassola-Morgagni e figli,E-commerce,IT,Micro,Micro,False,elena.russo,2020-03-09
+CUST-0421,"Scarpa, Soderini e Fagiani e figli",SaaS,DE,Enterprise,Enterprise,False,giulia.ferrari,2022-04-03
+CUST-0422,Satriani SPA,Healthcare,PL,Enterprise,Enterprise,False,giulia.ferrari,2020-10-13
+CUST-0423,Finetti-Battelli e figli,Retail,FR,Mid-market,Mid-market,False,elena.russo,2023-05-09
+CUST-0424,Mennea Group,Fintech,UK,Mid-market,Mid-market,False,elena.russo,2021-03-28
+CUST-0425,"Pezzali, Vento e Sforza Group",SaaS,NL,Enterprise,Enterprise,False,elena.russo,2024-12-06
+CUST-0426,Federico Group,Media,NL,SMB,SMB,False,luca.marino,2020-04-06
+CUST-0427,Bellocchio-Montanariello Group,Media,PL,Mid-market,Mid-market,False,elena.russo,2021-10-14
+CUST-0428,Pacelli s.r.l.,Logistics,ES,Enterprise,Enterprise,False,marco.ricci,2024-03-25
+CUST-0429,Rosselli-Peano Group,Healthcare,FR,Enterprise,Enterprise,False,marco.ricci,2024-07-08
+CUST-0430,Tamburello s.r.l.,Education,ES,Enterprise,Enterprise,False,luca.marino,2023-02-15
+CUST-0431,Traversa-Interiano SPA,Logistics,DE,SMB,SMB,False,sara.conti,2023-08-17
+CUST-0432,"Rastelli, Bosurgi e Ricci e figli",Manufacturing,IT,Micro,Micro,False,elena.russo,2024-01-23
+CUST-0433,"Magrassi, Micheletti e Camilleri SPA",Media,UK,SMB,SMB,False,elena.russo,2023-05-19
+CUST-0434,Malaparte-Marsili s.r.l.,Healthcare,PL,Micro,Micro,False,elena.russo,2024-01-23
+CUST-0435,"Redi, Depero e Ruggeri Group",Manufacturing,FR,SMB,SMB,False,giulia.ferrari,2021-03-09
+CUST-0436,Basso-Niscoromni s.r.l.,E-commerce,UK,SMB,SMB,False,luca.marino,2021-05-11
+CUST-0437,Bettoni-Borromeo s.r.l.,Healthcare,NL,SMB,SMB,False,sara.conti,2024-05-07
+CUST-0438,Toscanini-Curatoli SPA,Education,UK,Mid-market,Mid-market,False,sara.conti,2021-09-23
+CUST-0439,Roncalli SPA,Consulting,ES,Mid-market,Mid-market,False,giulia.ferrari,2024-07-02
+CUST-0440,Boitani e figli,Manufacturing,DE,Enterprise,Enterprise,False,sara.conti,2021-10-02
+CUST-0441,"Ottino, Orengo e Pasqua SPA",Healthcare,UK,Enterprise,Enterprise,False,marco.ricci,2020-02-03
+CUST-0442,"Cortese, Salgari e Pagliaro Group",Retail,NL,Mid-market,Mid-market,False,luca.marino,2021-08-27
+CUST-0443,Borsiere-Cibin Group,Healthcare,ES,SMB,SMB,False,elena.russo,2024-09-02
+CUST-0444,Mazzocchi-Ligorio e figli,Manufacturing,FR,SMB,SMB,False,luca.marino,2024-01-21
+CUST-0445,Aulenti e figli,Manufacturing,DE,Enterprise,Enterprise,False,marco.ricci,2024-01-15
+CUST-0446,Trapani-Pederiva SPA,Education,UK,Enterprise,Enterprise,False,giulia.ferrari,2022-12-09
+CUST-0447,Gullotta-Sabatini e figli,E-commerce,PL,Micro,Micro,False,giulia.ferrari,2024-04-14
+CUST-0448,"Lucchesi, Stradivari e Filippini SPA",Healthcare,IT,Micro,Micro,False,marco.ricci,2020-01-19
+CUST-0449,Borgia s.r.l.,Manufacturing,IT,SMB,SMB,False,elena.russo,2023-07-30
+CUST-0450,Russo SPA,SaaS,IT,Enterprise,Enterprise,False,elena.russo,2023-02-03
+CUST-0451,"Mezzetta, Napolitano e Boccioni Group",Logistics,NL,Micro,Enterprise,True,sara.conti,2020-02-05
+CUST-0452,Cristoforetti-Draghi Group,Fintech,IT,Enterprise,Enterprise,False,giulia.ferrari,2022-12-09
+CUST-0453,"Garzoni, Cassarà e Filzi e figli",Retail,NL,SMB,SMB,False,sara.conti,2024-07-27
+CUST-0454,Tafuri SPA,Media,IT,Mid-market,Mid-market,False,sara.conti,2022-04-11
+CUST-0455,Visintini-Pacillo s.r.l.,Healthcare,FR,Enterprise,Enterprise,False,giulia.ferrari,2023-08-31
+CUST-0456,"Cesaroni, Brichese e Bodoni Group",Media,ES,Micro,Micro,False,elena.russo,2022-09-01
+CUST-0457,Soderini-Trincavelli s.r.l.,Fintech,IT,Micro,Micro,False,luca.marino,2024-09-27
+CUST-0458,Borgia-Cavalcanti Group,Manufacturing,NL,Enterprise,Enterprise,False,giulia.ferrari,2022-12-17
+CUST-0459,"Borgia, Salgari e Schiaparelli Group",Retail,ES,Micro,Micro,False,sara.conti,2020-04-05
+CUST-0460,Villadicani e figli,Logistics,NL,Micro,Micro,False,elena.russo,2023-09-09
+CUST-0461,Rinaldi SPA,Manufacturing,IT,Micro,Micro,False,marco.ricci,2023-04-17
+CUST-0462,Travaglia e figli,Media,IT,SMB,SMB,False,sara.conti,2020-11-28
+CUST-0463,Dandolo-Cutrufo Group,Media,UK,SMB,SMB,False,elena.russo,2021-11-10
+CUST-0464,"Gatto, Muti e Travaglio Group",Fintech,PL,Enterprise,Enterprise,False,giulia.ferrari,2022-10-22
+CUST-0465,Gregori e figli,Media,DE,Mid-market,Mid-market,False,giulia.ferrari,2021-11-28
+CUST-0466,"Vigorelli, Leoncavallo e Cavalcanti Group",Manufacturing,IT,Enterprise,Enterprise,False,sara.conti,2024-05-23
+CUST-0467,"Ubaldi, Cabrini e Tedesco e figli",Manufacturing,NL,Enterprise,Enterprise,False,luca.marino,2022-06-03
+CUST-0468,"Cossiga, Donini e Moresi SPA",Media,IT,SMB,SMB,False,elena.russo,2021-08-27
+CUST-0469,Bova SPA,E-commerce,FR,SMB,SMB,False,marco.ricci,2022-02-17
+CUST-0470,"Iannuzzi, Fracci e Prati SPA",Manufacturing,FR,SMB,SMB,False,giulia.ferrari,2020-07-06
+CUST-0471,Verga-Luzi Group,Consulting,FR,Micro,Micro,False,sara.conti,2020-07-28
+CUST-0472,Gotti-Pisani Group,Media,ES,SMB,SMB,False,elena.russo,2023-02-10
+CUST-0473,Bonomo-Bianchini e figli,E-commerce,FR,Enterprise,Enterprise,False,elena.russo,2020-07-09
+CUST-0474,Praga-Sorrentino s.r.l.,SaaS,FR,Mid-market,Mid-market,False,luca.marino,2022-03-05
+CUST-0475,Morpurgo e figli,Education,DE,Micro,Micro,False,elena.russo,2022-12-03
+CUST-0476,Meucci-Musatti s.r.l.,Fintech,DE,SMB,SMB,False,sara.conti,2021-09-08
+CUST-0477,Paganini SPA,E-commerce,DE,Mid-market,Mid-market,False,luca.marino,2021-07-19
+CUST-0478,Goldstein-Schiavo SPA,E-commerce,FR,Enterprise,Enterprise,False,sara.conti,2021-05-20
+CUST-0479,Salata-Granatelli e figli,Healthcare,ES,Enterprise,Enterprise,False,giulia.ferrari,2020-10-04
+CUST-0480,Benussi Group,Manufacturing,PL,Enterprise,Mid-market,True,elena.russo,2022-02-17
+CUST-0481,Prodi-Grassi e figli,Media,PL,Mid-market,Mid-market,False,elena.russo,2020-10-05
+CUST-0482,Mazzeo-Faugno e figli,Healthcare,ES,Mid-market,Mid-market,False,sara.conti,2020-12-29
+CUST-0483,Tosto-Schiavone s.r.l.,Logistics,UK,Enterprise,Enterprise,False,luca.marino,2023-03-25
+CUST-0484,Tamburini-Ariasso SPA,Logistics,PL,SMB,SMB,False,luca.marino,2022-01-17
+CUST-0485,Togliatti-Saragat e figli,Healthcare,NL,Micro,Micro,False,elena.russo,2021-01-03
+CUST-0486,Niscoromni SPA,Consulting,UK,Micro,Micro,False,marco.ricci,2022-06-16
+CUST-0487,Lombardi s.r.l.,E-commerce,PL,Mid-market,Mid-market,False,luca.marino,2023-10-10
+CUST-0488,"Segrè, Lucciano e Valier SPA",Logistics,DE,Enterprise,Enterprise,False,sara.conti,2023-09-10
+CUST-0489,Ricciardi e figli,Media,IT,SMB,SMB,False,luca.marino,2023-05-09
+CUST-0490,Ostinelli-Pincherle Group,Education,NL,Enterprise,Enterprise,False,luca.marino,2023-01-18
+CUST-0491,Piccio SPA,Manufacturing,UK,Micro,Micro,False,elena.russo,2023-05-01
+CUST-0492,"Zampa, Ferrari e Orlando Group",Healthcare,UK,Micro,Micro,False,sara.conti,2020-12-06
+CUST-0493,Peano s.r.l.,Media,PL,Micro,Micro,False,sara.conti,2024-06-18
+CUST-0494,"Lippomano, Casaleggio e Cerquiglini SPA",E-commerce,FR,Enterprise,Enterprise,False,marco.ricci,2022-11-11
+CUST-0495,Palombi-Morlacchi Group,Media,ES,SMB,SMB,False,elena.russo,2023-11-15
+CUST-0496,Filangieri s.r.l.,SaaS,ES,SMB,SMB,False,giulia.ferrari,2021-08-28
+CUST-0497,"Bartoli, Beccaria e Barozzi e figli",E-commerce,IT,Enterprise,Enterprise,False,marco.ricci,2021-12-14
+CUST-0498,"Montecchi, Sgalambro e Traversa s.r.l.",Healthcare,NL,Mid-market,Mid-market,False,luca.marino,2021-12-14
+CUST-0499,Totino e figli,Consulting,FR,Enterprise,Enterprise,False,giulia.ferrari,2021-09-06
+CUST-0500,Metella-Cutuli s.r.l.,E-commerce,IT,Micro,Micro,False,sara.conti,2023-08-20
