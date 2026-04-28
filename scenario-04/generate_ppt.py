@@ -1,477 +1,524 @@
 """
-Generates the final board presentation for Scenario 04.
-Output: scenario-04/churn_rate_board_presentation.pptx
+Board presentation — modern dark theme.
+Run: python scenario-04/generate_ppt.py
 """
 
+import os
 from pptx import Presentation
 from pptx.util import Inches, Pt, Emu
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN
-from pptx.util import Inches, Pt
-import os
 
-# ── Palette ────────────────────────────────────────────────────────────────
-BLUE       = RGBColor(0x1F, 0x77, 0xB4)
-DARK       = RGBColor(0x1A, 0x1A, 0x2E)
-WHITE      = RGBColor(0xFF, 0xFF, 0xFF)
-LIGHT_GRAY = RGBColor(0xF5, 0xF5, 0xF5)
-MID_GRAY   = RGBColor(0x88, 0x88, 0x88)
-RED        = RGBColor(0xD6, 0x27, 0x28)
-GREEN      = RGBColor(0x2C, 0xA0, 0x2C)
-ORANGE     = RGBColor(0xFF, 0x7F, 0x0E)
-ACCENT     = RGBColor(0x00, 0xB4, 0xD8)
+# ── Palette ──────────────────────────────────────────────────────────────────
+BG          = RGBColor(0x0D, 0x1B, 0x2A)   # deep navy
+SURFACE     = RGBColor(0x16, 0x2B, 0x40)   # card background
+SURFACE2    = RGBColor(0x1C, 0x35, 0x4D)   # elevated card
+CYAN        = RGBColor(0x00, 0xC2, 0xCB)   # primary accent
+CYAN_DIM    = RGBColor(0x00, 0x7A, 0x82)
+WHITE       = RGBColor(0xFF, 0xFF, 0xFF)
+GRAY1       = RGBColor(0xC8, 0xD8, 0xE8)   # body text
+GRAY2       = RGBColor(0x6E, 0x8C, 0xA8)   # muted
+RED         = RGBColor(0xFF, 0x4D, 0x6D)
+ORANGE      = RGBColor(0xFF, 0x9F, 0x1C)
+GREEN       = RGBColor(0x06, 0xD6, 0xA0)
+PURPLE      = RGBColor(0x9B, 0x5D, 0xE5)
 
-SLIDE_W = Inches(13.33)
-SLIDE_H = Inches(7.5)
+W = Inches(13.33)
+H = Inches(7.5)
 
-
-# ── Helpers ─────────────────────────────────────────────────────────────────
-def new_prs() -> Presentation:
-    prs = Presentation()
-    prs.slide_width  = SLIDE_W
-    prs.slide_height = SLIDE_H
-    return prs
+ROUNDED = 5   # MSO autoshape id for rounded rectangle
 
 
-def blank_slide(prs: Presentation):
-    blank_layout = prs.slide_layouts[6]
-    return prs.slides.add_slide(blank_layout)
+# ── Primitives ────────────────────────────────────────────────────────────────
+def prs_new() -> Presentation:
+    p = Presentation()
+    p.slide_width, p.slide_height = W, H
+    return p
 
+def blank(prs):
+    return prs.slides.add_slide(prs.slide_layouts[6])
 
-def bg(slide, color: RGBColor):
-    fill = slide.background.fill
-    fill.solid()
-    fill.fore_color.rgb = color
+def fill_bg(slide, color=BG):
+    f = slide.background.fill
+    f.solid()
+    f.fore_color.rgb = color
 
+def add_rect(slide, l, t, w, h, color, rounded=False, line=None):
+    shape_id = ROUNDED if rounded else 1
+    s = slide.shapes.add_shape(shape_id, l, t, w, h)
+    s.fill.solid()
+    s.fill.fore_color.rgb = color
+    if line:
+        s.line.color.rgb = line
+        s.line.width = Pt(1)
+    else:
+        s.line.fill.background()
+    if rounded:
+        s.adjustments[0] = 0.04
+    return s
 
-def box(slide, l, t, w, h, text, font_size=18, bold=False, color=WHITE,
-        bg_color=None, align=PP_ALIGN.LEFT, italic=False, wrap=True):
-    txBox = slide.shapes.add_textbox(l, t, w, h)
-    tf = txBox.text_frame
+def add_text(slide, l, t, w, h, text, size=14, bold=False, italic=False,
+             color=WHITE, align=PP_ALIGN.LEFT, wrap=True):
+    tb = slide.shapes.add_textbox(l, t, w, h)
+    tf = tb.text_frame
     tf.word_wrap = wrap
     p = tf.paragraphs[0]
     p.alignment = align
-    run = p.add_run()
-    run.text = text
-    run.font.size = Pt(font_size)
-    run.font.bold = bold
-    run.font.italic = italic
-    run.font.color.rgb = color
-    if bg_color:
-        txBox.fill.solid()
-        txBox.fill.fore_color.rgb = bg_color
-    return txBox
+    r = p.add_run()
+    r.text = text
+    r.font.size = Pt(size)
+    r.font.bold = bold
+    r.font.italic = italic
+    r.font.color.rgb = color
+    return tb
 
+def tag(slide, l, t, text, color=CYAN):
+    """Small uppercase label tag."""
+    add_text(slide, l, t, Inches(5), Inches(0.32), text,
+             size=9, bold=True, color=color)
 
-def rect(slide, l, t, w, h, fill_color: RGBColor, line_color=None):
-    shape = slide.shapes.add_shape(1, l, t, w, h)  # MSO_SHAPE_TYPE.RECTANGLE
-    shape.fill.solid()
-    shape.fill.fore_color.rgb = fill_color
-    if line_color:
-        shape.line.color.rgb = line_color
-    else:
-        shape.line.fill.background()
-    return shape
+def divider(slide, t, color=SURFACE2):
+    add_rect(slide, Inches(0.55), t, Inches(12.23), Pt(1.5), color)
 
+def accent_bar(slide, l, t, h=Inches(0.05), color=CYAN):
+    add_rect(slide, l, t, Inches(12.23), h, color)
 
-def hline(slide, t, color=MID_GRAY):
-    ln = slide.shapes.add_shape(1, Inches(0.5), t, Inches(12.33), Pt(1))
-    ln.fill.solid()
-    ln.fill.fore_color.rgb = color
-    ln.line.fill.background()
+# ── Card helpers ──────────────────────────────────────────────────────────────
+def card(slide, l, t, w, h, top_color=None):
+    add_rect(slide, l, t, w, h, SURFACE, rounded=True)
+    if top_color:
+        add_rect(slide, l, t, w, Inches(0.055), top_color, rounded=False)
 
-
-def kpi_card(slide, l, t, w, h, label, value, value_color=BLUE, sub=None):
-    rect(slide, l, t, w, h, LIGHT_GRAY)
-    box(slide, l + Inches(0.15), t + Inches(0.12), w - Inches(0.3), Inches(0.4),
-        label, font_size=9, color=MID_GRAY)
-    box(slide, l + Inches(0.15), t + Inches(0.42), w - Inches(0.3), Inches(0.55),
-        value, font_size=22, bold=True, color=value_color)
+def kpi_card(slide, l, t, w, h, label, value, val_color=CYAN, sub=None):
+    card(slide, l, t, w, h, top_color=val_color)
+    add_text(slide, l+Inches(0.2), t+Inches(0.15), w-Inches(0.4), Inches(0.3),
+             label.upper(), size=8, bold=True, color=GRAY2)
+    add_text(slide, l+Inches(0.2), t+Inches(0.45), w-Inches(0.4), Inches(0.65),
+             value, size=26, bold=True, color=val_color)
     if sub:
-        box(slide, l + Inches(0.15), t + Inches(0.92), w - Inches(0.3), Inches(0.3),
-            sub, font_size=9, color=MID_GRAY)
+        add_text(slide, l+Inches(0.2), t+Inches(1.05), w-Inches(0.4), Inches(0.28),
+                 sub, size=9, color=GRAY2, italic=True)
+
+def section_header(slide, label, title, subtitle=None):
+    """Top band with section label + title."""
+    add_rect(slide, Inches(0), Inches(0), W, Inches(1.25), SURFACE)
+    accent_bar(slide, Inches(0.55), Inches(1.23))
+    tag(slide, Inches(0.55), Inches(0.18), label)
+    add_text(slide, Inches(0.55), Inches(0.48), Inches(12), Inches(0.65),
+             title, size=22, bold=True, color=WHITE)
+    if subtitle:
+        add_text(slide, Inches(0.55), Inches(0.95), Inches(12), Inches(0.35),
+                 subtitle, size=11, color=GRAY2)
+
+def numbered_row(slide, t, num, title, desc, timing=None, accent_color=CYAN):
+    """One step row for next-steps slide."""
+    # number circle
+    add_rect(slide, Inches(0.55), t+Inches(0.08), Inches(0.52), Inches(0.52),
+             accent_color, rounded=True)
+    add_text(slide, Inches(0.55), t+Inches(0.1), Inches(0.52), Inches(0.5),
+             str(num), size=16, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
+    add_text(slide, Inches(1.25), t+Inches(0.04), Inches(7.5), Inches(0.38),
+             title, size=13, bold=True, color=WHITE)
+    add_text(slide, Inches(1.25), t+Inches(0.4), Inches(9.8), Inches(0.35),
+             desc, size=10, color=GRAY1)
+    if timing:
+        add_rect(slide, Inches(11.7), t+Inches(0.12), Inches(1.3), Inches(0.38),
+                 accent_color, rounded=True)
+        add_text(slide, Inches(11.7), t+Inches(0.14), Inches(1.3), Inches(0.34),
+                 timing, size=9, bold=True, color=BG, align=PP_ALIGN.CENTER)
 
 
-def bullet(slide, l, t, w, text, color=DARK, size=14, indent=0):
-    prefix = "  " * indent + ("• " if indent == 0 else "– ")
-    box(slide, l, t, w, Inches(0.35), prefix + text, font_size=size, color=color)
+# ── Slide 01 — Cover ──────────────────────────────────────────────────────────
+def s01_cover(prs):
+    s = blank(prs)
+    fill_bg(s)
+
+    # left accent strip
+    add_rect(s, Inches(0), Inches(0), Inches(0.22), H, CYAN)
+
+    # big title block
+    add_text(s, Inches(0.65), Inches(1.4), Inches(8), Inches(0.5),
+             "CHURN RATE ANALYTICS", size=11, bold=True, color=CYAN)
+    add_text(s, Inches(0.65), Inches(1.9), Inches(9), Inches(2.0),
+             "One Metric.\nOne Definition.\nOne Dashboard.", size=40,
+             bold=True, color=WHITE)
+
+    divider(s, Inches(4.15), color=CYAN_DIM)
+
+    add_text(s, Inches(0.65), Inches(4.4), Inches(8), Inches(0.45),
+             "Sostituisce 40 dashboard su 3 BI tool con una sola fonte di verità.",
+             size=14, color=GRAY1)
+    add_text(s, Inches(0.65), Inches(5.0), Inches(8), Inches(0.38),
+             "Definizione canonica v1.0 — approvata 28 aprile 2026",
+             size=11, color=GRAY2)
+
+    # right stat block
+    for i, (val, lbl) in enumerate([
+        ("40", "dashboard eliminati"),
+        ("4",  "stakeholder allineati"),
+        ("1",  "fonte di verità"),
+    ]):
+        t = Inches(2.2) + i * Inches(1.45)
+        kpi_card(s, Inches(10.2), t, Inches(2.7), Inches(1.2), lbl, val, CYAN)
+
+    add_text(s, Inches(0.65), Inches(6.85), Inches(5), Inches(0.38),
+             "Scenario 04  ·  Hackathon", size=9, color=GRAY2)
 
 
-# ── Slides ───────────────────────────────────────────────────────────────────
+# ── Slide 02 — Il problema ────────────────────────────────────────────────────
+def s02_problem(prs):
+    s = blank(prs)
+    fill_bg(s)
+    section_header(s, "01 — IL PROBLEMA",
+                   "Stessa domanda, 4 risposte diverse")
 
-def slide_01_title(prs):
-    """Cover"""
-    s = blank_slide(prs)
-    bg(s, DARK)
-    rect(s, Inches(0), Inches(0), Inches(4.5), SLIDE_H, BLUE)
-    box(s, Inches(0.3), Inches(2.2), Inches(3.9), Inches(0.6),
-        "CHURN RATE", font_size=13, bold=True, color=WHITE, align=PP_ALIGN.LEFT)
-    box(s, Inches(0.3), Inches(2.75), Inches(3.9), Inches(1.6),
-        "One Metric.\nOne Definition.\nOne Dashboard.", font_size=24, bold=True,
-        color=WHITE, align=PP_ALIGN.LEFT)
-    box(s, Inches(0.3), Inches(4.6), Inches(3.9), Inches(0.4),
-        "Board Presentation  |  Definition v1.0", font_size=11,
-        color=RGBColor(0xCC, 0xDD, 0xEE), align=PP_ALIGN.LEFT)
-    box(s, Inches(0.3), Inches(5.1), Inches(3.9), Inches(0.35),
-        "Approvata: 28 aprile 2026", font_size=10,
-        color=RGBColor(0xAA, 0xBB, 0xCC), align=PP_ALIGN.LEFT)
+    q = "« Qual è il churn rate di Q2 2025? »"
+    add_text(s, Inches(0.55), Inches(1.45), Inches(12.2), Inches(0.5),
+             q, size=16, italic=True, color=CYAN)
 
-    box(s, Inches(5.0), Inches(1.5), Inches(7.8), Inches(0.7),
-        "Il problema", font_size=13, bold=True, color=ACCENT)
-    box(s, Inches(5.0), Inches(2.1), Inches(7.8), Inches(0.45),
-        "40 dashboard  ·  3 BI tools  ·  4 risposte diverse per la stessa domanda",
-        font_size=14, color=WHITE)
-    hline(s, Inches(2.7))
-    box(s, Inches(5.0), Inches(2.85), Inches(7.8), Inches(0.7),
-        "La soluzione", font_size=13, bold=True, color=ACCENT)
-    box(s, Inches(5.0), Inches(3.45), Inches(7.8), Inches(1.4),
-        "Una definizione canonica versioned, un motore di calcolo auditabile\n"
-        "e un'unica dashboard come source of truth per VP, CS, Finance e Board.",
-        font_size=14, color=WHITE)
-    hline(s, Inches(5.0))
-    box(s, Inches(5.0), Inches(5.15), Inches(2.3), Inches(0.35),
-        "Scenario 04  |  Hackathon", font_size=10, color=MID_GRAY)
-
-
-def slide_02_problem(prs):
-    """Il problema — 4 risposte diverse"""
-    s = blank_slide(prs)
-    bg(s, WHITE)
-    rect(s, Inches(0), Inches(0), SLIDE_W, Inches(1.0), DARK)
-    box(s, Inches(0.5), Inches(0.2), Inches(12), Inches(0.6),
-        "IL PROBLEMA", font_size=11, bold=True, color=ACCENT)
-    box(s, Inches(0.5), Inches(0.5), Inches(12), Inches(0.6),
-        "Stessa domanda, 4 risposte: «qual è il churn rate di Q2 2025?»",
-        font_size=20, bold=True, color=WHITE)
-
-    cw = Inches(2.9)
-    gap = Inches(0.2)
-    tops = [
-        ("VP Sales", "3.1%", "Logo churn\n(senza downgrade)", ORANGE),
-        ("CS Head", "2.4%", "CS-accountable\n(escluse bankruptcies)", BLUE),
-        ("Finance", "5.8%", "nMRR grezzo\n(con 340 duplicati CRM)", RED),
-        ("Analyst", "2.1%", "nMRR canonical\n(D4, senza duplicati)", GREEN),
+    answers = [
+        ("VP Sales",   "3.1%",  "Logo churn\nsenza downgrade",        ORANGE),
+        ("CS Head",    "2.4%",  "CS-accountable\nescluse bankruptcies", PURPLE),
+        ("Finance",    "5.8%",  "nMRR grezzo\n+ 340 duplicati CRM",    RED),
+        ("Analyst",    "2.1%",  "nMRR canonical D4\nclean",            GREEN),
     ]
-    for i, (role, val, method, col) in enumerate(tops):
-        lft = Inches(0.5) + i * (cw + gap)
-        rect(s, lft, Inches(1.3), cw, Inches(4.2), LIGHT_GRAY)
-        rect(s, lft, Inches(1.3), cw, Inches(0.08), col)
-        box(s, lft + Inches(0.15), Inches(1.5), cw - Inches(0.3), Inches(0.5),
-            role, font_size=13, bold=True, color=DARK)
-        box(s, lft + Inches(0.15), Inches(2.1), cw - Inches(0.3), Inches(0.8),
-            val, font_size=36, bold=True, color=col)
-        box(s, lft + Inches(0.15), Inches(2.9), cw - Inches(0.3), Inches(0.8),
-            method, font_size=11, color=MID_GRAY)
+    cw = Inches(2.85)
+    for i, (role, val, method, col) in enumerate(answers):
+        l = Inches(0.55) + i * (cw + Inches(0.22))
+        card(s, l, Inches(2.1), cw, Inches(3.5), top_color=col)
+        add_text(s, l+Inches(0.2), Inches(2.3), cw-Inches(0.4), Inches(0.38),
+                 role.upper(), size=9, bold=True, color=col)
+        add_text(s, l+Inches(0.2), Inches(2.7), cw-Inches(0.4), Inches(0.9),
+                 val, size=44, bold=True, color=col)
+        add_text(s, l+Inches(0.2), Inches(3.65), cw-Inches(0.4), Inches(0.7),
+                 method, size=11, color=GRAY1)
 
-    rect(s, Inches(0.5), Inches(5.7), Inches(12.33), Inches(0.9),
-         RGBColor(0xFF, 0xF3, 0xCD))
-    box(s, Inches(0.7), Inches(5.8), Inches(12), Inches(0.6),
-        "⚠  Il 5.8% presentato al board in Q2 2025 era un bug: 340 eventi duplicati da una retry storm "
-        "del CRM. Il valore corretto (canonical D4) era 2.1%. La rettifica non è mai stata emessa.",
-        font_size=11, color=RGBColor(0x85, 0x53, 0x00))
+    # warning banner
+    add_rect(s, Inches(0.55), Inches(5.85), Inches(12.23), Inches(1.3),
+             RGBColor(0x2A, 0x10, 0x15), rounded=True)
+    add_rect(s, Inches(0.55), Inches(5.85), Inches(0.06), Inches(1.3), RED)
+    add_text(s, Inches(0.8), Inches(5.95), Inches(11.7), Inches(0.38),
+             "BUG CONFERMATO — Q2 2025", size=11, bold=True, color=RED)
+    add_text(s, Inches(0.8), Inches(6.33), Inches(11.7), Inches(0.65),
+             "Il 5.8% presentato al board era causato da 340 eventi duplicati (CRM retry storm). "
+             "Valore corretto: 2.1%.  Delta: +3.7pp falsi.  Rettifica formale ancora da emettere.",
+             size=10, color=GRAY1)
 
 
-def slide_03_stakeholders(prs):
-    """Stakeholder requirements"""
-    s = blank_slide(prs)
-    bg(s, WHITE)
-    rect(s, Inches(0), Inches(0), SLIDE_W, Inches(1.0), DARK)
-    box(s, Inches(0.5), Inches(0.2), Inches(12), Inches(0.35),
-        "REQUISITI", font_size=11, bold=True, color=ACCENT)
-    box(s, Inches(0.5), Inches(0.5), Inches(12), Inches(0.5),
-        "Cosa voleva ogni stakeholder — e dove si contraddicevano",
-        font_size=20, bold=True, color=WHITE)
+# ── Slide 03 — Stakeholder requirements ──────────────────────────────────────
+def s03_stakeholders(prs):
+    s = blank(prs)
+    fill_bg(s)
+    section_header(s, "02 — REQUISITI",
+                   "Cosa voleva ogni stakeholder",
+                   "12 punti di disaccordo → 1 definizione approvata da tutti")
 
     rows = [
-        ("VP Sales & Marketing",    ORANGE, "Churn rate logocentrico (clienti persi, non €). Vuole il toggle CS-accountable."),
-        ("CS Head",                  BLUE,   "Escludere bankruptcies e M&A dal suo KPI. Save reversal entro 30gg = non churn."),
-        ("Finance Director",         GREEN,  "nMRR normalizzato (annuali ÷12). Micro-contratti <€200/m esclusi dall'headline."),
-        ("Data Analyst",             ACCENT, "Definizione versionata, auditabile, con boundary cases espliciti e test automatici."),
+        ("VP Sales & Marketing", ORANGE,
+         "Vista logocentrica",
+         "Churn = clienti persi. Toggle CS-accountable separato dal KPI finanziario."),
+        ("CS Head", PURPLE,
+         "Esclusioni strutturali",
+         "Bankruptcies e M&A fuori dal suo KPI. Save reversal entro 30gg = churn annullato."),
+        ("Finance Director", GREEN,
+         "nMRR normalizzato",
+         "Annuali ÷ 12. Micro-contratti < €200/m esclusi dall'headline. Versioning obbligatorio."),
+        ("Data Analyst", CYAN,
+         "Audit trail completo",
+         "Definizione con soglie numeriche esplicite, boundary cases, test automatici, export CSV."),
     ]
-    for i, (name, col, desc) in enumerate(rows):
-        t = Inches(1.3) + i * Inches(1.35)
-        rect(s, Inches(0.5), t, Inches(0.06), Inches(1.1), col)
-        box(s, Inches(0.75), t + Inches(0.05), Inches(11.5), Inches(0.4),
-            name, font_size=13, bold=True, color=DARK)
-        box(s, Inches(0.75), t + Inches(0.42), Inches(11.5), Inches(0.55),
-            desc, font_size=12, color=RGBColor(0x44, 0x44, 0x44))
 
-    hline(s, Inches(6.8))
-    box(s, Inches(0.5), Inches(6.9), Inches(12), Inches(0.4),
-        "12 punti di disaccordo risolti → 1 documento di definizione approvato da tutti e 4  |  v1.0 — 28 apr 2026",
-        font_size=10, color=MID_GRAY)
+    rh = Inches(1.2)
+    for i, (name, col, badge, desc) in enumerate(rows):
+        t = Inches(1.5) + i * (rh + Inches(0.06))
+        card(s, Inches(0.55), t, Inches(12.23), rh, top_color=col)
+        add_rect(s, Inches(0.55), t, Inches(0.06), rh, col)
+
+        add_rect(s, Inches(0.85), t+Inches(0.35), Inches(1.8), Inches(0.38),
+                 col, rounded=True)
+        add_text(s, Inches(0.85), t+Inches(0.37), Inches(1.8), Inches(0.34),
+                 badge, size=9, bold=True, color=BG, align=PP_ALIGN.CENTER)
+
+        add_text(s, Inches(2.85), t+Inches(0.08), Inches(3.5), Inches(0.38),
+                 name, size=13, bold=True, color=WHITE)
+        add_text(s, Inches(2.85), t+Inches(0.52), Inches(9.6), Inches(0.5),
+                 desc, size=11, color=GRAY1)
 
 
-def slide_04_definition(prs):
-    """Definizione canonica v1.0"""
-    s = blank_slide(prs)
-    bg(s, WHITE)
-    rect(s, Inches(0), Inches(0), SLIDE_W, Inches(1.0), DARK)
-    box(s, Inches(0.5), Inches(0.2), Inches(12), Inches(0.35),
-        "DEFINIZIONE CANONICA  v1.0", font_size=11, bold=True, color=ACCENT)
-    box(s, Inches(0.5), Inches(0.5), Inches(12), Inches(0.5),
-        "Ogni soglia è numerica. Nessun termine vago.",
-        font_size=20, bold=True, color=WHITE)
+# ── Slide 04 — Definizione v1.0 ───────────────────────────────────────────────
+def s04_definition(prs):
+    s = blank(prs)
+    fill_bg(s)
+    section_header(s, "03 — DEFINIZIONE CANONICA v1.0",
+                   "Ogni soglia è numerica. Nessun termine vago.",
+                   "Approvata da VP · CS · Finance · Analyst  —  28 apr 2026")
 
     rules = [
-        ("Formula headline",      "nMRR Lost  ÷  nMRR Active (inizio periodo)  × 100",         BLUE),
-        ("Data canonica",         "contract_end_date  — non cancellation_date, non last_login", BLUE),
-        ("nMRR normalizzazione",  "Contratti annuali ÷ 12  — nessun picco a scadenza",          BLUE),
-        ("Micro-contratti",       "< €200/mese  → esclusi dall'headline, tracciati in micro_churn_rate", ORANGE),
-        ("Contraction/downgrade", "Conta se delta ≥ €50  E  ≥ 10% del nMRR precedente (doppia soglia)", ORANGE),
-        ("Save reversal",         "Riattivazione entro 30 giorni da contract_end_date  → churn annullato", GREEN),
-        ("Grace post-rinnovo",    "Cancellazione entro 14 giorni da rinnovo automatico  → refund, non churn", GREEN),
-        ("Pausa contrattuale",    "At-risk fino a 90 giorni. Dopo → churn automatico (pause_expiry)", RED),
+        ("Formula",           "nMRR Lost  ÷  nMRR Active (inizio periodo)  × 100",          CYAN),
+        ("Data canonica",     "contract_end_date  — non la data di cancellazione",           CYAN),
+        ("nMRR",              "Annuali ÷ 12  —  nessun picco artificiale a scadenza",        CYAN),
+        ("Micro-contratti",   "< €200/mese → esclusi dall'headline · tracciati separatamente", ORANGE),
+        ("Downgrade",         "Conta se delta ≥ €50  E  ≥ 10% del nMRR precedente",          ORANGE),
+        ("Save reversal",     "Riattivazione entro 30 giorni da contract_end_date → annullato", GREEN),
+        ("Grace post-rinnovo","Cancellazione entro 14gg da rinnovo automatico → rimborso, non churn", GREEN),
+        ("Pausa",             "At-risk ≤ 90 giorni · oltre = churn automatico (pause_expiry)", RED),
     ]
+
+    col_w = Inches(5.9)
     for i, (label, rule, col) in enumerate(rules):
-        t = Inches(1.2) + i * Inches(0.72)
-        rect(s, Inches(0.5), t + Inches(0.1), Inches(0.04), Inches(0.45), col)
-        box(s, Inches(0.7), t + Inches(0.05), Inches(3.0), Inches(0.4),
-            label, font_size=10, bold=True, color=DARK)
-        box(s, Inches(3.8), t + Inches(0.05), Inches(9.0), Inches(0.4),
-            rule, font_size=10, color=RGBColor(0x33, 0x33, 0x33))
-        hline(s, t + Inches(0.62), color=RGBColor(0xE0, 0xE0, 0xE0))
+        ci = i % 2
+        ri = i // 2
+        l = Inches(0.55) + ci * (col_w + Inches(0.22))
+        t = Inches(1.55) + ri * Inches(1.32)
+        card(s, l, t, col_w, Inches(1.2))
+        add_rect(s, l, t, col_w, Inches(0.05), col)
+        add_text(s, l+Inches(0.2), t+Inches(0.1), col_w-Inches(0.4), Inches(0.3),
+                 label.upper(), size=8, bold=True, color=col)
+        add_text(s, l+Inches(0.2), t+Inches(0.42), col_w-Inches(0.4), Inches(0.65),
+                 rule, size=11, color=GRAY1)
 
 
-def slide_05_architecture(prs):
-    """Architettura della soluzione"""
-    s = blank_slide(prs)
-    bg(s, WHITE)
-    rect(s, Inches(0), Inches(0), SLIDE_W, Inches(1.0), DARK)
-    box(s, Inches(0.5), Inches(0.2), Inches(12), Inches(0.35),
-        "ARCHITETTURA", font_size=11, bold=True, color=ACCENT)
-    box(s, Inches(0.5), Inches(0.5), Inches(12), Inches(0.5),
-        "Tre layer indipendenti — dati, calcolo, presentazione",
-        font_size=20, bold=True, color=WHITE)
+# ── Slide 05 — Architettura ───────────────────────────────────────────────────
+def s05_architecture(prs):
+    s = blank(prs)
+    fill_bg(s)
+    section_header(s, "04 — ARCHITETTURA",
+                   "Tre layer indipendenti — testati, versionati, auditabili")
 
     layers = [
-        (Inches(0.5),  "DATA LAYER",       "5 CSV sintetici con noise iniettato\n340 duplicati CRM · timezone mismatch · segment errors",  ORANGE),
-        (Inches(4.6),  "ENGINE",            "FastAPI + Pydantic  |  calculator.py\n18 unit test · ogni risultato tagged definition_version", BLUE),
-        (Inches(8.7),  "PRESENTATION",      "Streamlit dashboard  +  NL eval harness\nPlotly charts · Claude tool use · 20 golden questions", GREEN),
+        ("DATA",          ORANGE, "5 CSV con noise iniettato",
+         ["340 duplicati CRM", "Timezone mismatch UTC/CET",
+          "15 segmenti errati", "12 end_date mancanti"]),
+        ("ENGINE",        CYAN,   "FastAPI · Pydantic · Python",
+         ["calculator.py — pure functions", "18 unit test · 100% pass",
+          "Ogni risultato tagged definition_version", "_window_bounds · save reversals · micro filter"]),
+        ("DASHBOARD",     GREEN,  "Streamlit · Plotly · Claude",
+         ["KPI cards · trend · breakdown", "At-risk con risk score e CSM",
+          "NL eval harness — 20/20 pass", "Export CSV versionato"]),
     ]
-    for lft, title, desc, col in layers:
-        rect(s, lft, Inches(1.5), Inches(3.8), Inches(3.5), LIGHT_GRAY)
-        rect(s, lft, Inches(1.5), Inches(3.8), Inches(0.06), col)
-        box(s, lft + Inches(0.2), Inches(1.7), Inches(3.4), Inches(0.5),
-            title, font_size=13, bold=True, color=col)
-        box(s, lft + Inches(0.2), Inches(2.3), Inches(3.4), Inches(1.0),
-            desc, font_size=11, color=DARK)
 
-    # arrows
-    for ax in [Inches(4.3), Inches(8.4)]:
-        rect(s, ax, Inches(3.1), Inches(0.35), Inches(0.25),
-             RGBColor(0xCC, 0xCC, 0xCC))
+    lw = Inches(3.9)
+    for i, (name, col, sub, bullets) in enumerate(layers):
+        l = Inches(0.55) + i * (lw + Inches(0.22))
+        card(s, l, Inches(1.5), lw, Inches(4.7), top_color=col)
+        add_text(s, l+Inches(0.22), Inches(1.65), lw-Inches(0.44), Inches(0.5),
+                 name, size=18, bold=True, color=col)
+        add_text(s, l+Inches(0.22), Inches(2.1), lw-Inches(0.44), Inches(0.35),
+                 sub, size=10, color=GRAY2)
+        divider(s, Inches(2.5), SURFACE2)
+        for j, b in enumerate(bullets):
+            add_text(s, l+Inches(0.22), Inches(2.65)+j*Inches(0.62),
+                     lw-Inches(0.44), Inches(0.5),
+                     "· " + b, size=10, color=GRAY1)
 
-    box(s, Inches(0.5), Inches(5.3), Inches(12.3), Inches(0.4),
-        "Ogni ChurnResult porta: definition_version · period_start · period_end · window · segment_filter",
-        font_size=10, color=MID_GRAY, align=PP_ALIGN.CENTER)
+        # arrow between layers
+        if i < 2:
+            ax = l + lw + Inches(0.04)
+            add_text(s, ax, Inches(3.6), Inches(0.18), Inches(0.38),
+                     "→", size=18, bold=True, color=GRAY2, align=PP_ALIGN.CENTER)
 
-    kpis = [
-        ("Unit test",         "18 / 18", GREEN),
-        ("Golden questions",  "20 / 20", GREEN),
-        ("Accuracy",          "100%",    GREEN),
-        ("Refusal accuracy",  "100%",    GREEN),
-        ("False confidence",  "0%",      GREEN),
-    ]
-    kw = Inches(2.3)
-    for i, (lbl, val, col) in enumerate(kpis):
-        lft = Inches(0.5) + i * (kw + Inches(0.08))
-        kpi_card(s, lft, Inches(5.8), kw, Inches(1.3), lbl, val, col)
+    # bottom KPI strip
+    metrics = [("18/18", "Unit test"), ("20/20", "Golden Qs"),
+               ("100%", "Accuracy"), ("0%", "False confidence")]
+    mw = Inches(2.8)
+    for i, (val, lbl) in enumerate(metrics):
+        l = Inches(0.55) + i * (mw + Inches(0.2))
+        kpi_card(s, l, Inches(6.35), mw, Inches(0.9), lbl, val, GREEN)
 
 
-def slide_06_reconciliation(prs):
-    """Riconciliazione storica"""
-    s = blank_slide(prs)
-    bg(s, WHITE)
-    rect(s, Inches(0), Inches(0), SLIDE_W, Inches(1.0), DARK)
-    box(s, Inches(0.5), Inches(0.2), Inches(12), Inches(0.35),
-        "RICONCILIAZIONE STORICA", font_size=11, bold=True, color=ACCENT)
-    box(s, Inches(0.5), Inches(0.5), Inches(12), Inches(0.5),
-        "5 anni · 4 definizioni · 1 verità canonica",
-        font_size=20, bold=True, color=WHITE)
+# ── Slide 06 — Riconciliazione storica ────────────────────────────────────────
+def s06_reconciliation(prs):
+    s = blank(prs)
+    fill_bg(s)
+    section_header(s, "05 — RICONCILIAZIONE STORICA",
+                   "5 anni · 4 definizioni · 1 verità canonica",
+                   "Ogni trimestre storico ricalcolato con D4 — le colonne precedenti non sono comparabili")
 
     defs = [
-        ("D0  2021–2023",   "Logo churn puro",          BLUE,   "Underestimates revenue impact"),
-        ("D1  Q2–Q4 2023",  "Logo + downgrade",          ORANGE, "Metodo cambiato con nuovo CFO"),
-        ("D2  2024–Q1 2025","nMRR grezzo",               GREEN,  "Miglioramento reale, ma senza normalizzazione"),
-        ("D3  Q2 2025",     "nMRR + duplicati CRM",      RED,    "BUG: 5.8% invece di 2.1% — +3.7pp falsi"),
-        ("D4  v1.0 canonica","nMRR normalizzato, clean", ACCENT, "Definizione approvata — retroattiva su 5 anni"),
+        ("D0", "2021 – Q1 2023",  "Logo churn puro",           GRAY2,
+         "Misura solo i clienti persi. Non cattura la perdita di fatturato."),
+        ("D1", "Q2 – Q4 2023",    "Logo + downgrade",          ORANGE,
+         "Cambiato con il nuovo CFO. Include contrazioni ma senza soglia chiara."),
+        ("D2", "2024 – Q1 2025",  "nMRR grezzo",               CYAN,
+         "Migliora la misura revenue ma manca la normalizzazione annuali÷12."),
+        ("D3", "Q2 2025",         "nMRR + duplicati CRM",      RED,
+         "BUG: 340 eventi duplicati portano il rate da 2.1% a 5.8% (+3.7pp falsi)."),
+        ("D4", "v1.0 canonica",   "nMRR normalizzato · clean", GREEN,
+         "Definizione approvata. Retroattiva su 5 anni. Questo è il numero corretto."),
     ]
-    for i, (period, name, col, note) in enumerate(defs):
-        t = Inches(1.3) + i * Inches(1.05)
-        rect(s, Inches(0.5), t, Inches(0.06), Inches(0.85), col)
-        box(s, Inches(0.75), t + Inches(0.02), Inches(2.5), Inches(0.38),
-            period, font_size=10, bold=True, color=DARK)
-        box(s, Inches(3.3), t + Inches(0.02), Inches(3.5), Inches(0.38),
-            name, font_size=11, color=DARK)
-        box(s, Inches(7.0), t + Inches(0.02), Inches(6.0), Inches(0.38),
-            note, font_size=10, color=MID_GRAY, italic=True)
-        hline(s, t + Inches(0.95), color=RGBColor(0xE8, 0xE8, 0xE8))
 
-    rect(s, Inches(0.5), Inches(6.6), Inches(12.3), Inches(0.65),
-         RGBColor(0xFF, 0xE8, 0xE8))
-    box(s, Inches(0.7), Inches(6.68), Inches(12), Inches(0.5),
-        "❌  Q2 2025: il board ha visto 5.8%.  Il valore corretto era 2.1%.  "
-        "Delta: +3.7pp.  Causa: 340 eventi duplicati da retry storm CRM.  "
-        "Rettifica formale da emettere.",
-        font_size=10, color=RED)
+    rh = Inches(0.98)
+    for i, (code, period, name, col, note) in enumerate(defs):
+        t = Inches(1.5) + i * (rh + Inches(0.05))
+        is_last = (i == len(defs) - 1)
+        bg_col = SURFACE2 if is_last else SURFACE
+        card(s, Inches(0.55), t, Inches(12.23), rh, top_color=col)
+
+        # code badge
+        add_rect(s, Inches(0.55), t, Inches(0.06), rh, col)
+        add_rect(s, Inches(0.75), t+Inches(0.25), Inches(0.6), Inches(0.42),
+                 col, rounded=True)
+        add_text(s, Inches(0.75), t+Inches(0.27), Inches(0.6), Inches(0.38),
+                 code, size=11, bold=True, color=BG, align=PP_ALIGN.CENTER)
+
+        add_text(s, Inches(1.55), t+Inches(0.08), Inches(2.0), Inches(0.38),
+                 period, size=10, color=GRAY2)
+        add_text(s, Inches(3.6), t+Inches(0.08), Inches(3.2), Inches(0.38),
+                 name, size=12, bold=True, color=WHITE if not is_last else col)
+        add_text(s, Inches(6.9), t+Inches(0.08), Inches(5.7), Inches(0.75),
+                 note, size=10, color=GRAY1 if not is_last else GREEN)
+
+        if is_last:
+            add_rect(s, Inches(12.4), t+Inches(0.25), Inches(0.38), Inches(0.42),
+                     GREEN, rounded=True)
+            add_text(s, Inches(12.4), t+Inches(0.27), Inches(0.38), Inches(0.38),
+                     "✓", size=14, bold=True, color=BG, align=PP_ALIGN.CENTER)
 
 
-def slide_07_dashboard(prs):
-    """Dashboard — screenshot e KPI"""
-    s = blank_slide(prs)
-    bg(s, WHITE)
-    rect(s, Inches(0), Inches(0), SLIDE_W, Inches(1.0), DARK)
-    box(s, Inches(0.5), Inches(0.2), Inches(12), Inches(0.35),
-        "LA DASHBOARD", font_size=11, bold=True, color=ACCENT)
-    box(s, Inches(0.5), Inches(0.5), Inches(12), Inches(0.5),
-        "Single source of truth — sostituisce 40 dashboard su 3 BI tool",
-        font_size=20, bold=True, color=WHITE)
+# ── Slide 07 — Dashboard ──────────────────────────────────────────────────────
+def s07_dashboard(prs):
+    s = blank(prs)
+    fill_bg(s)
+    section_header(s, "06 — LA DASHBOARD",
+                   "Single source of truth — sostituisce 40 dashboard su 3 BI tool")
 
     kpis = [
-        ("nMRR Churn Rate",   "0.19%",      BLUE),
-        ("MRR Lost",          "€2.446",     BLUE),
-        ("MRR Active",        "€1.313.020", BLUE),
-        ("Logo Churn Rate",   "0.31%",      BLUE),
-        ("CS Saves",          "0",          MID_GRAY),
-        ("nMRR rischio 🔴",   "€0",         GREEN),
+        ("nMRR Churn Rate", "0.19%", CYAN),
+        ("MRR Lost",        "€2.446",  CYAN),
+        ("MRR Active",      "€1.3M",   GRAY2),
+        ("Logo Churn",      "0.31%",   CYAN),
+        ("CS Saves",        "0",       GRAY2),
+        ("nMRR rischio 🔴", "€0",      GREEN),
     ]
     kw = Inches(2.0)
     for i, (lbl, val, col) in enumerate(kpis):
-        lft = Inches(0.4) + i * (kw + Inches(0.08))
-        kpi_card(s, lft, Inches(1.2), kw, Inches(1.1), lbl, val, col)
+        kpi_card(s, Inches(0.55)+i*(kw+Inches(0.1)), Inches(1.5),
+                 kw, Inches(1.15), lbl, val, col)
 
     features = [
-        ("Vista Financial / Contractual", "Toggle tra nMRR e logo churn"),
-        ("Window: Monthly · R30 · R90",   "Flessibilità temporale senza ricalcolo manuale"),
-        ("Filtro segmento",               "Enterprise · Mid-market · SMB"),
-        ("Toggle CS-accountable",         "Esclude bankruptcies e M&A dal KPI CS"),
-        ("Contratti a rischio",           "Scadenza ≤90gg con risk score e CSM owner"),
-        ("Export CSV",                    "Tutti i periodi del trend con definition_version"),
-        ("Glossario inline",              "Definizione v1.0 sempre visibile, con data approvazione"),
-        ("Storico 5 anni",                "Confronto D0→D4 con annotazioni sui cambi di metodo"),
+        (CYAN,   "Vista Financial / Contractual", "Toggle nMRR ↔ logo churn"),
+        (ORANGE, "Window: Monthly · R30 · R90",   "Flessibilità temporale on-the-fly"),
+        (PURPLE, "Filtro segmento",                "Enterprise · Mid-market · SMB"),
+        (CYAN,   "Toggle CS-accountable",          "Separa KPI CS da quello finanziario"),
+        (GREEN,  "Contratti a rischio",             "Scadenza ≤90gg · risk score · CSM owner"),
+        (GREEN,  "Export CSV versionato",           "Tutti i periodi con definition_version"),
+        (ORANGE, "Glossario inline",                "Definizione v1.0 sempre visibile"),
+        (PURPLE, "Storico 5 anni",                  "Confronto D0→D4 con annotazioni"),
     ]
-    for i, (feat, desc) in enumerate(features):
-        col_idx = i % 2
-        row_idx = i // 2
-        lft = Inches(0.5) + col_idx * Inches(6.3)
-        t   = Inches(2.6) + row_idx * Inches(0.85)
-        rect(s, lft, t, Inches(0.06), Inches(0.6), BLUE)
-        box(s, lft + Inches(0.2), t, Inches(2.8), Inches(0.38),
-            feat, font_size=11, bold=True, color=DARK)
-        box(s, lft + Inches(0.2), t + Inches(0.35), Inches(5.8), Inches(0.38),
-            desc, font_size=10, color=MID_GRAY)
+
+    cw = Inches(5.9)
+    for i, (col, feat, desc) in enumerate(features):
+        ci, ri = i % 2, i // 2
+        l = Inches(0.55) + ci * (cw + Inches(0.22))
+        t = Inches(2.85) + ri * Inches(0.96)
+        card(s, l, t, cw, Inches(0.85))
+        add_rect(s, l, t+Inches(0.18), Inches(0.05), Inches(0.5), col)
+        add_text(s, l+Inches(0.22), t+Inches(0.1), Inches(2.5), Inches(0.35),
+                 feat, size=11, bold=True, color=WHITE)
+        add_text(s, l+Inches(0.22), t+Inches(0.48), Inches(5.4), Inches(0.3),
+                 desc, size=10, color=GRAY2)
 
 
-def slide_08_eval(prs):
-    """Eval harness — risultati"""
-    s = blank_slide(prs)
-    bg(s, WHITE)
-    rect(s, Inches(0), Inches(0), SLIDE_W, Inches(1.0), DARK)
-    box(s, Inches(0.5), Inches(0.2), Inches(12), Inches(0.35),
-        "NL EVAL HARNESS", font_size=11, bold=True, color=ACCENT)
-    box(s, Inches(0.5), Inches(0.5), Inches(12), Inches(0.5),
-        "Claude risponde a domande sul churn rate con tool use — 20 golden questions",
-        font_size=20, bold=True, color=WHITE)
+# ── Slide 08 — Eval harness ───────────────────────────────────────────────────
+def s08_eval(prs):
+    s = blank(prs)
+    fill_bg(s)
+    section_header(s, "07 — NL EVAL HARNESS",
+                   "Claude risponde a domande sul churn con tool use — 20 golden questions")
 
-    kpis = [
-        ("Accuracy",         "100%",   "> 80%",  GREEN),
-        ("Refusal accuracy", "100%",   "> 90%",  GREEN),
-        ("False confidence", "0%",     "< 5%",   GREEN),
-        ("Overall pass",     "100%",   "> 80%",  GREEN),
+    results = [
+        ("Accuracy",         "100%", "> 80%",  GREEN),
+        ("Refusal accuracy", "100%", "> 90%",  GREEN),
+        ("False confidence", "0%",   "< 5%",   GREEN),
+        ("Pass rate",        "100%", "> 80%",  GREEN),
     ]
-    kw = Inches(2.9)
-    for i, (lbl, val, target, col) in enumerate(kpis):
-        lft = Inches(0.5) + i * (kw + Inches(0.15))
-        kpi_card(s, lft, Inches(1.3), kw, Inches(1.3), lbl, val, col,
-                 sub=f"Target: {target}")
+    rw = Inches(2.85)
+    for i, (lbl, val, tgt, col) in enumerate(results):
+        kpi_card(s, Inches(0.55)+i*(rw+Inches(0.17)), Inches(1.5),
+                 rw, Inches(1.4), lbl, val, col, sub=f"Target {tgt}")
+
+    add_text(s, Inches(0.55), Inches(3.1), Inches(6), Inches(0.4),
+             "DISTRIBUZIONE PER TIPO", size=9, bold=True, color=GRAY2)
 
     types = [
-        ("answerable",  4,  "Lookup metriche con get_metric"),
-        ("comparison",  3,  "Confronto periodi e segmenti"),
-        ("definition",  5,  "Regole e soglie della definizione"),
-        ("edge_case",   3,  "Boundary cases (grace period, micro, save)"),
-        ("refusal",     5,  "Rifiuto corretto (forecast, PII, out-of-range)"),
+        ("answerable",  4, CYAN,   "Lookup metriche — get_metric"),
+        ("comparison",  3, ORANGE, "Confronto periodi e segmenti"),
+        ("definition",  5, PURPLE, "Regole e soglie della definizione"),
+        ("edge_case",   3, GREEN,  "Boundary cases (grace, micro, save)"),
+        ("refusal",     5, RED,    "Rifiuto corretto (forecast, PII, OOB)"),
     ]
-    box(s, Inches(0.5), Inches(2.8), Inches(12), Inches(0.4),
-        "Distribuzione per tipo  (20 domande totali)", font_size=12,
-        bold=True, color=DARK)
-    for i, (qtype, count, desc) in enumerate(types):
-        t = Inches(3.25) + i * Inches(0.72)
-        bw = Inches(count * 1.8)
-        rect(s, Inches(0.5), t, bw, Inches(0.5), BLUE)
-        box(s, Inches(0.5) + bw + Inches(0.1), t + Inches(0.06),
-            Inches(9.0), Inches(0.38),
-            f"{qtype}  ({count})  —  {desc}", font_size=11, color=DARK)
 
-    hline(s, Inches(7.0))
-    box(s, Inches(0.5), Inches(7.1), Inches(12), Inches(0.35),
-        "Tool use: get_metric · compare_periods · list_definitions · explain_calculation  "
-        "|  Prompt caching sul system prompt  |  Agentic loop max 5 turns",
-        font_size=9, color=MID_GRAY)
+    max_count = 5
+    bw_unit = Inches(1.6)
+    for i, (qtype, count, col, desc) in enumerate(types):
+        t = Inches(3.6) + i * Inches(0.68)
+        bw = bw_unit * count
+        add_rect(s, Inches(0.55), t, bw, Inches(0.48), col, rounded=True)
+        add_text(s, Inches(0.55)+bw+Inches(0.15), t+Inches(0.06),
+                 Inches(8), Inches(0.38),
+                 f"{qtype}  ({count})  —  {desc}", size=11, color=GRAY1)
+
+    # tools
+    add_rect(s, Inches(7.0), Inches(3.1), Inches(5.8), Inches(3.85),
+             SURFACE, rounded=True)
+    add_rect(s, Inches(7.0), Inches(3.1), Inches(5.8), Inches(0.05), CYAN)
+    add_text(s, Inches(7.2), Inches(3.22), Inches(5.4), Inches(0.35),
+             "TOOL USE", size=9, bold=True, color=CYAN)
+    tools = ["get_metric", "compare_periods", "list_definitions", "explain_calculation"]
+    for i, t_name in enumerate(tools):
+        t = Inches(3.7) + i * Inches(0.72)
+        add_rect(s, Inches(7.2), t, Inches(2.2), Inches(0.42), SURFACE2, rounded=True)
+        add_text(s, Inches(7.35), t+Inches(0.06), Inches(2.0), Inches(0.35),
+                 t_name, size=10, bold=True, color=CYAN)
+
+    add_text(s, Inches(7.2), Inches(6.1), Inches(5.4), Inches(0.35),
+             "Prompt caching · agentic loop ≤5 turns", size=9, color=GRAY2)
 
 
-def slide_09_next(prs):
-    """Next steps"""
-    s = blank_slide(prs)
-    bg(s, WHITE)
-    rect(s, Inches(0), Inches(0), SLIDE_W, Inches(1.0), DARK)
-    box(s, Inches(0.5), Inches(0.2), Inches(12), Inches(0.35),
-        "NEXT STEPS", font_size=11, bold=True, color=ACCENT)
-    box(s, Inches(0.5), Inches(0.5), Inches(12), Inches(0.5),
-        "Dalla demo alla produzione",
-        font_size=20, bold=True, color=WHITE)
+# ── Slide 09 — Next steps ─────────────────────────────────────────────────────
+def s09_next(prs):
+    s = blank(prs)
+    fill_bg(s)
+    section_header(s, "08 — NEXT STEPS",
+                   "Dalla demo alla produzione")
 
     steps = [
-        ("1", "Rettifica formale Q2 2025",
-         "Emettere la nota al board: churn reale 2.1%, non 5.8%. Aggiornare i verbali.",
-         RED, "Immediato"),
-        ("2", "Deploy su server interno",
-         "Containerizzare con Docker, deploy su infrastruttura aziendale. "
-         "Accesso via browser, nessuna installazione per il CFO.",
-         ORANGE, "2 settimane"),
-        ("3", "Connessione DB di produzione",
-         "Sostituire i CSV con lettura diretta dal warehouse. "
-         "Mantenere data_loader.py come unico punto di accesso ai dati.",
-         BLUE, "1 mese"),
-        ("4", "Definizione v1.1",
-         "Revisione annuale: aggiornare DEFINITION_VERSION nel codice. "
-         "Footer e glossario si aggiornano automaticamente.",
-         GREEN, "Apr 2027"),
-        ("5", "Deprecazione dashboard legacy",
-         "Dopo 30 giorni di run parallelo, disattivare i 40 dashboard esistenti. "
-         "Comunicare a tutti i team il nuovo URL unico.",
-         ACCENT, "3 mesi"),
+        (RED,    "Rettifica formale Q2 2025",
+         "Emettere la nota al board: churn reale 2.1%, non 5.8%. Delta: +3.7pp. Aggiornare i verbali.",
+         "Immediato"),
+        (ORANGE, "Deploy su server interno",
+         "Docker container su infrastruttura aziendale. Accesso via browser, nessuna installazione.",
+         "2 settimane"),
+        (CYAN,   "Connessione DB di produzione",
+         "Sostituire i CSV con lettura dal warehouse. data_loader.py resta l'unico punto di accesso.",
+         "1 mese"),
+        (GREEN,  "Deprecazione dashboard legacy",
+         "30 giorni di run parallelo, poi dismissione dei 40 dashboard. Comunicare il nuovo URL unico.",
+         "3 mesi"),
+        (PURPLE, "Definizione v1.1",
+         "Revisione annuale. Aggiornare DEFINITION_VERSION — footer e glossario si aggiornano in automatico.",
+         "Apr 2027"),
     ]
 
-    for i, (num, title, desc, col, timing) in enumerate(steps):
-        t = Inches(1.2) + i * Inches(1.1)
-        rect(s, Inches(0.5), t + Inches(0.1), Inches(0.5), Inches(0.5), col)
-        box(s, Inches(0.5), t + Inches(0.12), Inches(0.5), Inches(0.4),
-            num, font_size=18, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
-        box(s, Inches(1.2), t + Inches(0.05), Inches(3.5), Inches(0.4),
-            title, font_size=13, bold=True, color=DARK)
-        box(s, Inches(1.2), t + Inches(0.45), Inches(9.0), Inches(0.45),
-            desc, font_size=10, color=MID_GRAY)
-        rect(s, Inches(11.5), t + Inches(0.15), Inches(1.5), Inches(0.35), col)
-        box(s, Inches(11.5), t + Inches(0.18), Inches(1.5), Inches(0.3),
-            timing, font_size=9, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
+    for i, (col, title, desc, timing) in enumerate(steps):
+        numbered_row(s, Inches(1.4)+i*Inches(1.12), i+1, title, desc, timing, col)
 
 
-# ── Main ─────────────────────────────────────────────────────────────────────
+# ── Main ──────────────────────────────────────────────────────────────────────
 def main():
-    prs = new_prs()
-    slide_01_title(prs)
-    slide_02_problem(prs)
-    slide_03_stakeholders(prs)
-    slide_04_definition(prs)
-    slide_05_architecture(prs)
-    slide_06_reconciliation(prs)
-    slide_07_dashboard(prs)
-    slide_08_eval(prs)
-    slide_09_next(prs)
+    prs = prs_new()
+    s01_cover(prs)
+    s02_problem(prs)
+    s03_stakeholders(prs)
+    s04_definition(prs)
+    s05_architecture(prs)
+    s06_reconciliation(prs)
+    s07_dashboard(prs)
+    s08_eval(prs)
+    s09_next(prs)
 
-    out = os.path.join(os.path.dirname(__file__), "churn_rate_board_presentation.pptx")
+    out = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                       "churn_rate_board_presentation.pptx")
     prs.save(out)
     print(f"Saved: {out}  ({len(prs.slides)} slides)")
 
