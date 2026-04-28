@@ -153,9 +153,13 @@
   }
   .cover-stat-grid { display:grid; grid-template-columns:1fr; gap:.7rem; }
 
-  /* ── slide numbering ── */
-  .reveal .slide-number { background:transparent; color:var(--gray2);
-    font-size:.6em; bottom:.8rem; right:1rem; }
+  /* ── slide numbering — bottom left to avoid overlap with controls ── */
+  .reveal .slide-number {
+    background: transparent; color: var(--gray2);
+    font-size: .6em; bottom: .6rem; left: 1rem; right: auto;
+  }
+  /* ── controls — push up so they don't overlap ── */
+  .reveal .controls { bottom: 1.4rem; right: .8rem; }
 
   /* ── override reveal defaults ── */
   .reveal .slides section {
@@ -435,54 +439,54 @@
     <div class="sub">Ogni trimestre storico ricalcolato con D4 — le colonne precedenti non sono comparabili</div>
   </div>
 
-  <div>
-    <div class="timeline-row" style="border-color:var(--gray2);">
-      <span class="badge" style="background:var(--gray2);">D0</span>
-      <span style="font-size:.65em;color:var(--gray2);">2021 – Q1 2023</span>
-      <span style="font-size:.75em;font-weight:700;color:var(--white);">Logo churn puro</span>
-      <span style="font-size:.65em;color:var(--gray1);">Misura clienti persi. Non cattura la perdita di fatturato.</span>
+  <div style="display:grid;gap:.22rem;">
+    <div class="timeline-row" style="border-color:var(--gray2);padding:.28rem .6rem;">
+      <span class="badge" style="background:var(--gray2);font-size:.5em;">D0</span>
+      <span style="font-size:.58em;color:var(--gray2);">2021 – Q1 2023</span>
+      <span style="font-size:.65em;font-weight:700;color:var(--white);">Logo churn puro</span>
+      <span style="font-size:.58em;color:var(--gray1);">Misura clienti persi. Non cattura la perdita di fatturato.</span>
     </div>
-    <div class="timeline-row" style="border-color:var(--orange);">
-      <span class="badge" style="background:var(--orange);">D1</span>
-      <span style="font-size:.65em;color:var(--gray2);">Q2 – Q4 2023</span>
-      <span style="font-size:.75em;font-weight:700;color:var(--white);">Logo + downgrade</span>
-      <span style="font-size:.65em;color:var(--gray1);">Cambiato con il nuovo CFO. Include contrazioni ma senza soglia chiara.</span>
+    <div class="timeline-row" style="border-color:var(--orange);padding:.28rem .6rem;">
+      <span class="badge" style="background:var(--orange);font-size:.5em;">D1</span>
+      <span style="font-size:.58em;color:var(--gray2);">Q2 – Q4 2023</span>
+      <span style="font-size:.65em;font-weight:700;color:var(--white);">Logo + downgrade</span>
+      <span style="font-size:.58em;color:var(--gray1);">Cambiato con il nuovo CFO. Include contrazioni ma senza soglia chiara.</span>
     </div>
-    <div class="timeline-row" style="border-color:var(--cyan);">
-      <span class="badge" style="background:var(--cyan);">D2</span>
-      <span style="font-size:.65em;color:var(--gray2);">2024 – Q1 2025</span>
-      <span style="font-size:.75em;font-weight:700;color:var(--white);">nMRR grezzo</span>
-      <span style="font-size:.65em;color:var(--gray1);">Migliora la misura revenue ma manca la normalizzazione annuali ÷ 12.</span>
+    <div class="timeline-row" style="border-color:var(--cyan);padding:.28rem .6rem;">
+      <span class="badge" style="background:var(--cyan);font-size:.5em;">D2</span>
+      <span style="font-size:.58em;color:var(--gray2);">2024 – Q1 2025</span>
+      <span style="font-size:.65em;font-weight:700;color:var(--white);">nMRR grezzo</span>
+      <span style="font-size:.58em;color:var(--gray1);">Migliora la misura revenue ma manca la normalizzazione annuali ÷ 12.</span>
     </div>
-    <div class="timeline-row" style="border-color:var(--red);background:#2a1015;">
-      <span class="badge" style="background:var(--red);">D3</span>
-      <span style="font-size:.65em;color:var(--gray2);">Q2 2025</span>
-      <span style="font-size:.75em;font-weight:700;color:var(--red);">nMRR + duplicati CRM</span>
-      <span style="font-size:.65em;color:var(--gray1);">BUG: 340 eventi duplicati portano il rate da 2.1% a 5.8% (+3.7pp falsi).</span>
+    <div class="timeline-row" style="border-color:var(--red);background:#2a1015;padding:.28rem .6rem;">
+      <span class="badge" style="background:var(--red);font-size:.5em;">D3</span>
+      <span style="font-size:.58em;color:var(--gray2);">Q2 2025</span>
+      <span style="font-size:.65em;font-weight:700;color:var(--red);">nMRR + duplicati CRM</span>
+      <span style="font-size:.58em;color:var(--gray1);">BUG: 340 eventi duplicati — rate da 2.1% a 5.8% (+3.7pp falsi).</span>
     </div>
-    <div class="timeline-row" style="border-color:var(--green);background:var(--surface2);">
-      <span class="badge" style="background:var(--green);">D4</span>
-      <span style="font-size:.65em;color:var(--gray2);">v1.0 canonica</span>
-      <span style="font-size:.75em;font-weight:700;color:var(--green);">nMRR normalizzato · clean</span>
-      <span style="font-size:.65em;color:var(--green);">Definizione approvata. Retroattiva su 5 anni. Questo è il numero corretto. ✓</span>
+    <div class="timeline-row" style="border-color:var(--green);background:var(--surface2);padding:.28rem .6rem;">
+      <span class="badge" style="background:var(--green);font-size:.5em;">D4</span>
+      <span style="font-size:.58em;color:var(--gray2);">v1.0 canonica</span>
+      <span style="font-size:.65em;font-weight:700;color:var(--green);">nMRR normalizzato · clean</span>
+      <span style="font-size:.58em;color:var(--green);">Definizione approvata. Retroattiva su 5 anni. ✓</span>
     </div>
   </div>
 
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:.7rem;">
-    <div class="card green">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:.4rem;">
+    <div class="card green" style="padding:.4rem .7rem;">
       <div class="card-label">Delta medio storico vs board</div>
-      <div class="card-value" style="color:var(--green);font-size:1.4em;">+0.4pp</div>
-      <div class="card-sub">Il board ha sistematicamente sotto-stimato il churn reale</div>
+      <div class="card-value" style="color:var(--green);font-size:1.2em;">+0.4pp</div>
+      <div class="card-sub">Board ha sotto-stimato sistematicamente</div>
     </div>
-    <div class="card red">
+    <div class="card red" style="padding:.4rem .7rem;">
       <div class="card-label">Picco anomalo Q2 2025</div>
-      <div class="card-value" style="color:var(--red);font-size:1.4em;">+3.7pp</div>
-      <div class="card-sub">Board: 5.8% &nbsp;·&nbsp; Canonical: 2.1% &nbsp;·&nbsp; Bug duplicati</div>
+      <div class="card-value" style="color:var(--red);font-size:1.2em;">+3.7pp</div>
+      <div class="card-sub">Board: 5.8% · Canonical: 2.1% · Bug duplicati</div>
     </div>
-    <div class="card cyan">
+    <div class="card cyan" style="padding:.4rem .7rem;">
       <div class="card-label">Trimestri riconciliati</div>
-      <div class="card-value" style="color:var(--cyan);font-size:1.4em;">20</div>
-      <div class="card-sub">Q1 2021 → Q4 2025 · D4 vince in tutti i 15 casi testati</div>
+      <div class="card-value" style="color:var(--cyan);font-size:1.2em;">20</div>
+      <div class="card-sub">Q1 2021 → Q4 2025 · D4 vince 15/15</div>
     </div>
   </div>
 </section>
