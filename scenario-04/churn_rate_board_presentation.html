@@ -33,16 +33,16 @@
   .muted { color:var(--gray2); font-size:.7em; }
 
   /* ── layout utils ── */
-  .cols2  { display:grid; grid-template-columns:1fr 1fr;    gap:1.2rem; }
-  .cols3  { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.2rem; }
-  .cols4  { display:grid; grid-template-columns:repeat(4,1fr); gap:.8rem; }
-  .cols6  { display:grid; grid-template-columns:repeat(6,1fr); gap:.6rem; }
+  .cols2  { display:grid; grid-template-columns:1fr 1fr;    gap:.7rem; }
+  .cols3  { display:grid; grid-template-columns:1fr 1fr 1fr; gap:.7rem; }
+  .cols4  { display:grid; grid-template-columns:repeat(4,1fr); gap:.5rem; }
+  .cols6  { display:grid; grid-template-columns:repeat(6,1fr); gap:.4rem; }
 
   /* ── card ── */
   .card {
     background: var(--surface);
-    border-radius: 10px;
-    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    padding: .6rem .9rem;
     position: relative;
     overflow: hidden;
   }
@@ -56,10 +56,10 @@
   .card.red::before    { background:var(--red);    }
   .card.purple::before { background:var(--purple); }
   .card.gray::before   { background:var(--gray2);  }
-  .card-label { font-size:.55em; font-weight:700; text-transform:uppercase;
-                letter-spacing:.1em; color:var(--gray2); margin-bottom:.3rem; }
-  .card-value { font-size:1.8em; font-weight:800; line-height:1; }
-  .card-sub   { font-size:.55em; color:var(--gray2); margin-top:.4rem; }
+  .card-label { font-size:.5em; font-weight:700; text-transform:uppercase;
+                letter-spacing:.08em; color:var(--gray2); margin-bottom:.15rem; }
+  .card-value { font-size:1.5em; font-weight:800; line-height:1; }
+  .card-sub   { font-size:.5em; color:var(--gray2); margin-top:.2rem; }
 
   /* ── kpi hero ── */
   .kpi-hero { font-size:3em; font-weight:900; line-height:1; }
@@ -67,47 +67,47 @@
   /* ── row card ── */
   .row-card {
     background: var(--surface);
-    border-radius: 8px;
-    padding:.7rem 1rem;
+    border-radius: 7px;
+    padding:.45rem .8rem;
     display:grid;
-    grid-template-columns: 2.5rem 1fr auto;
+    grid-template-columns: 2rem 1fr auto;
     align-items:center;
-    gap:1rem;
-    margin-bottom:.5rem;
+    gap:.8rem;
+    margin-bottom:.35rem;
   }
   .row-card .num {
-    width:2.2rem; height:2.2rem; border-radius:50%;
+    width:1.8rem; height:1.8rem; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
-    font-weight:800; font-size:.9em; color:var(--bg); flex-shrink:0;
+    font-weight:800; font-size:.8em; color:var(--bg); flex-shrink:0;
   }
   .row-card .timing {
-    font-size:.6em; font-weight:700; padding:.25rem .7rem;
+    font-size:.55em; font-weight:700; padding:.2rem .6rem;
     border-radius:20px; white-space:nowrap; color:var(--bg);
   }
 
   /* ── accent bar ── */
   .accent-bar {
-    height:3px; background:var(--cyan);
-    border-radius:2px; margin:1rem 0;
+    height:2px; background:var(--cyan);
+    border-radius:2px; margin:.5rem 0;
   }
 
   /* ── def rule ── */
   .def-rule {
-    background:var(--surface); border-radius:8px;
-    padding:.6rem 1rem; margin-bottom:.5rem;
+    background:var(--surface); border-radius:6px;
+    padding:.35rem .8rem; margin-bottom:.3rem;
     border-left:3px solid;
   }
-  .def-rule .rule-label { font-size:.6em; font-weight:700;
+  .def-rule .rule-label { font-size:.55em; font-weight:700;
     text-transform:uppercase; letter-spacing:.08em; }
-  .def-rule .rule-text  { font-size:.75em; color:var(--gray1); margin-top:.15rem; }
+  .def-rule .rule-text  { font-size:.65em; color:var(--gray1); margin-top:.08rem; }
 
   /* ── timeline row ── */
   .timeline-row {
     display:grid;
-    grid-template-columns: 2.8rem 5.5rem 1fr 1fr;
-    align-items:center; gap:.8rem;
-    background:var(--surface); border-radius:8px;
-    padding:.5rem .8rem; margin-bottom:.4rem;
+    grid-template-columns: 2.4rem 5rem 1fr 1fr;
+    align-items:center; gap:.6rem;
+    background:var(--surface); border-radius:6px;
+    padding:.35rem .7rem; margin-bottom:.25rem;
     border-left:4px solid;
   }
   .badge {
@@ -124,20 +124,20 @@
   .warn-box strong { color:var(--red); }
 
   /* ── section slide header ── */
-  .slide-header { margin-bottom:1.2rem; }
-  .slide-header h2 { font-size:1.25em; font-weight:800; margin:.3rem 0 .1rem; }
-  .slide-header .sub { font-size:.65em; color:var(--gray2); }
+  .slide-header { margin-bottom:.6rem; }
+  .slide-header h2 { font-size:1.1em; font-weight:800; margin:.2rem 0 .05rem; }
+  .slide-header .sub { font-size:.6em; color:var(--gray2); }
 
   /* ── feature row ── */
   .feat-row {
     display:grid; grid-template-columns:3px 1fr;
-    gap:.8rem; align-items:center;
-    background:var(--surface); border-radius:8px;
-    padding:.5rem .8rem; margin-bottom:.4rem; overflow:hidden;
+    gap:.6rem; align-items:center;
+    background:var(--surface); border-radius:6px;
+    padding:.35rem .7rem; margin-bottom:.28rem; overflow:hidden;
   }
-  .feat-row .bar { width:3px; height:2rem; border-radius:2px; }
-  .feat-title  { font-size:.75em; font-weight:700; color:var(--white); }
-  .feat-desc   { font-size:.6em;  color:var(--gray2); }
+  .feat-row .bar { width:3px; height:1.6rem; border-radius:2px; }
+  .feat-title  { font-size:.68em; font-weight:700; color:var(--white); }
+  .feat-desc   { font-size:.55em; color:var(--gray2); }
 
   /* ── progress bar (eval) ── */
   .prog-row { display:flex; align-items:center; gap:.8rem; margin-bottom:.5rem; }
@@ -158,10 +158,15 @@
     font-size:.6em; bottom:.8rem; right:1rem; }
 
   /* ── override reveal defaults ── */
-  .reveal .slides section { padding: 1.8rem 2.5rem; box-sizing:border-box; height:100%; }
-  .reveal p, .reveal li   { font-size:.8em; line-height:1.5; }
+  .reveal .slides section {
+    padding: .9rem 1.6rem;
+    box-sizing: border-box;
+    height: 100%;
+    overflow: hidden;
+  }
+  .reveal p, .reveal li { font-size:.75em; line-height:1.4; }
   .reveal ul { list-style:none; padding:0; margin:0; }
-  .reveal ul li::before   { content:"· "; color:var(--cyan); font-weight:700; }
+  .reveal ul li::before { content:"· "; color:var(--cyan); font-weight:700; }
 
   /* ── tool pill ── */
   .pill {
@@ -676,9 +681,9 @@ Reveal.initialize({
   controls: true,
   progress: true,
   center: false,
-  width: 1280,
-  height: 720,
-  margin: 0,
+  width: 1440,
+  height: 810,
+  margin: 0.04,
   minScale: 0.2,
   maxScale: 2.0,
 });
