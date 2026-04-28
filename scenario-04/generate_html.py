@@ -1,6 +1,6 @@
 """
 Generates churn_rate_board_presentation.html
-Self-contained reveal.js presentation (CDN) — 9 slides, dark theme.
+Self-contained reveal.js presentation (CDN) — 10 slides, dark theme.
 Run: python scenario-04/generate_html.py
 """
 
@@ -226,8 +226,14 @@ HTML = r"""<!DOCTYPE html>
   <div class="slide-header">
     <div class="tag">01 — Il Problema</div>
     <h2>Stessa domanda, 4 risposte diverse</h2>
-    <div class="sub" style="font-style:italic;color:var(--cyan);">
-      &laquo; Qual è il churn rate di Q2 2025? &raquo;
+    <div style="display:flex;gap:.6rem;align-items:center;margin:.3rem 0;">
+      <div class="sub" style="font-style:italic;color:var(--cyan);">&laquo; Qual è il churn rate di Q2 2025? &raquo;</div>
+      <span style="margin-left:auto;font-size:.6em;color:var(--gray2);">Strumenti in uso:&nbsp;
+        <span class="pill">Tableau</span>
+        <span class="pill">Power BI</span>
+        <span class="pill">Looker</span>
+        &nbsp;→ tutti dismessi
+      </span>
     </div>
   </div>
 
@@ -320,6 +326,20 @@ HTML = r"""<!DOCTYPE html>
     <div class="tag">03 — Definizione Canonica v1.0</div>
     <h2>Ogni soglia è numerica. Nessun termine vago.</h2>
     <div class="sub">Approvata da VP · CS · Finance · Analyst &nbsp;—&nbsp; 28 apr 2026</div>
+  </div>
+
+  <div class="card cyan" style="padding:.8rem 1.4rem;margin-bottom:.8rem;display:flex;align-items:center;gap:2rem;">
+    <div>
+      <div class="card-label">Formula headline</div>
+      <div style="font-size:1.6em;font-weight:900;color:var(--cyan);letter-spacing:-.02em;line-height:1.1;">
+        nMRR Lost &nbsp;÷&nbsp; nMRR Active &nbsp;×&nbsp; 100
+      </div>
+    </div>
+    <div style="border-left:2px solid var(--surface2);padding-left:2rem;font-size:.7em;color:var(--gray2);line-height:1.6;">
+      Data canonica: <strong style="color:var(--white);">contract_end_date</strong><br>
+      Annuali: <strong style="color:var(--white);">valore ÷ 12</strong> (no picchi a scadenza)<br>
+      Versione: <strong style="color:var(--cyan);">v1.0</strong>
+    </div>
   </div>
 
   <div class="cols2">
@@ -454,6 +474,24 @@ HTML = r"""<!DOCTYPE html>
       <span style="font-size:.65em;color:var(--green);">Definizione approvata. Retroattiva su 5 anni. Questo è il numero corretto. ✓</span>
     </div>
   </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:.7rem;">
+    <div class="card green">
+      <div class="card-label">Delta medio storico vs board</div>
+      <div class="card-value" style="color:var(--green);font-size:1.4em;">+0.4pp</div>
+      <div class="card-sub">Il board ha sistematicamente sotto-stimato il churn reale</div>
+    </div>
+    <div class="card red">
+      <div class="card-label">Picco anomalo Q2 2025</div>
+      <div class="card-value" style="color:var(--red);font-size:1.4em;">+3.7pp</div>
+      <div class="card-sub">Board: 5.8% &nbsp;·&nbsp; Canonical: 2.1% &nbsp;·&nbsp; Bug duplicati</div>
+    </div>
+    <div class="card cyan">
+      <div class="card-label">Trimestri riconciliati</div>
+      <div class="card-value" style="color:var(--cyan);font-size:1.4em;">20</div>
+      <div class="card-sub">Q1 2021 → Q4 2025 · D4 vince in tutti i 15 casi testati</div>
+    </div>
+  </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════
@@ -552,7 +590,7 @@ HTML = r"""<!DOCTYPE html>
         <div style="font-size:.8em;font-weight:700;color:var(--white);">Rettifica formale Q2 2025</div>
         <div style="font-size:.62em;color:var(--gray1);">Emettere la nota al board: churn reale 2.1%, non 5.8%. Aggiornare i verbali.</div>
       </div>
-      <span class="timing" style="background:var(--red);">Immediato</span>
+      <span class="timing" style="background:var(--red);">Entro 15 mag 2026</span>
     </div>
     <div class="row-card">
       <div class="num" style="background:var(--orange);">2</div>
@@ -586,6 +624,49 @@ HTML = r"""<!DOCTYPE html>
       </div>
       <span class="timing" style="background:var(--purple);">Apr 2027</span>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SLIDE 10 — CHIUSURA
+════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="cover-left-bar"></div>
+  <div style="height:100%;display:flex;flex-direction:column;justify-content:center;padding-left:.5rem;">
+
+    <div class="tag" style="margin-bottom:.8rem;">Decisione del Board</div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:1.8rem;">
+      <div class="card green" style="text-align:center;padding:1.4rem;">
+        <div class="card-label">Churn reale Q2 2025</div>
+        <div style="font-size:3em;font-weight:900;color:var(--green);line-height:1;">2.1%</div>
+        <div class="card-sub">Non 5.8% — dato corretto, canonical D4</div>
+      </div>
+      <div class="card cyan" style="text-align:center;padding:1.4rem;">
+        <div class="card-label">Definizione approvata</div>
+        <div style="font-size:3em;font-weight:900;color:var(--cyan);line-height:1;">v1.0</div>
+        <div class="card-sub">28 aprile 2026 · firmata da tutti gli stakeholder</div>
+      </div>
+      <div class="card red" style="text-align:center;padding:1.4rem;">
+        <div class="card-label">Rettifica da emettere</div>
+        <div style="font-size:2em;font-weight:900;color:var(--red);line-height:1.1;">15 mag<br>2026</div>
+        <div class="card-sub">Nota formale al board · aggiornamento verbali</div>
+      </div>
+    </div>
+
+    <div class="accent-bar" style="margin-bottom:1rem;"></div>
+
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;">
+      <div>
+        <div style="font-size:.75em;color:var(--white);font-weight:700;">Churn Rate Dashboard — Definition v1.0</div>
+        <div class="muted">github.com/lorenzo-torreggiani/claude-code-hackathon &nbsp;·&nbsp; Scenario 04</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-size:.65em;color:var(--gray2);">Approvato da</div>
+        <div style="font-size:.75em;color:var(--white);font-weight:600;">Giulia Ferretti &nbsp;·&nbsp; Elena Rossi &nbsp;·&nbsp; Marco Bianchi &nbsp;·&nbsp; Anna Kovacs</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
