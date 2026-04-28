@@ -124,9 +124,12 @@ delta_logo = round(con["churn_rate_pct"] - prev_con["churn_rate_pct"], 2)
 # 3 — KPI cards row 1
 # ---------------------------------------------------------------------------
 
+at_risk_df = get_at_risk_contracts(period)
+high_risk_mrr = at_risk_df.loc[at_risk_df["risk"].astype(str).str.startswith("🔴"), "mrr"].sum() if not at_risk_df.empty else 0
+
 st.markdown('<div class="section-title">Headline KPIs</div>', unsafe_allow_html=True)
 
-k1, k2, k3, k4, k5, k6 = st.columns(6)
+k1, k2, k3, k4, k5, k6, k7 = st.columns(7)
 
 rate_val = fin["churn_rate_pct"] if view == "Financial" else con["churn_rate_pct"]
 rate_delta = delta_rate if view == "Financial" else delta_logo
@@ -169,6 +172,12 @@ with k6:
         label="Excluded Events",
         value=f"{excl}",
         help=f"Admin cancellations: {result.excluded_events.get('admin_cancellations',0)} | Micro contracts: {result.excluded_events.get('micro_contracts',0)}",
+    )
+with k7:
+    st.metric(
+        label="nMRR a rischio alto 🔴",
+        value=f"€{high_risk_mrr:,.0f}",
+        help="Contratti con scadenza ≤30gg E ultimo login ≥30gg fa",
     )
 
 st.divider()
@@ -215,13 +224,10 @@ st.divider()
 
 st.markdown('<div class="section-title">Contratti a rischio — prossimi 90 giorni</div>', unsafe_allow_html=True)
 
-at_risk_df = get_at_risk_contracts(period)
-
 if at_risk_df.empty:
     st.success("Nessun contratto a rischio nei prossimi 90 giorni.")
 else:
     total_at_risk_mrr = at_risk_df["mrr"].sum()
-    high_risk_mrr = at_risk_df.loc[at_risk_df["risk"].str.startswith("🔴"), "mrr"].sum()
     ar1, ar2, ar3 = st.columns(3)
     with ar1:
         st.metric("Totale nMRR a rischio", f"€{total_at_risk_mrr:,.0f}")
