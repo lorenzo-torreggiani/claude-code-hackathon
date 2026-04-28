@@ -283,40 +283,40 @@ HTML = r"""<!DOCTYPE html>
     <div class="sub">12 punti di disaccordo → 1 definizione approvata da tutti · v1.0 · 28 apr 2026</div>
   </div>
 
-  <div style="display:grid;gap:.5rem;">
-    <div class="card" style="border-left:4px solid var(--orange);border-radius:8px;padding:.7rem 1rem;">
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:center;">
+  <div style="display:grid;gap:.3rem;">
+    <div class="card" style="border-left:4px solid var(--orange);border-radius:6px;padding:.4rem .8rem;">
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:.8rem;align-items:center;">
         <span class="badge" style="background:var(--orange);">VP Sales</span>
         <div>
-          <div style="font-size:.8em;font-weight:700;color:var(--white);">Vista logocentrica</div>
-          <div style="font-size:.65em;color:var(--gray1);">Churn = clienti persi. Toggle CS-accountable separato dal KPI finanziario.</div>
+          <div style="font-size:.72em;font-weight:700;color:var(--white);">Vista logocentrica</div>
+          <div style="font-size:.6em;color:var(--gray1);">Churn = clienti persi. Toggle CS-accountable separato dal KPI finanziario.</div>
         </div>
       </div>
     </div>
-    <div class="card" style="border-left:4px solid var(--purple);border-radius:8px;padding:.7rem 1rem;">
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:center;">
+    <div class="card" style="border-left:4px solid var(--purple);border-radius:6px;padding:.4rem .8rem;">
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:.8rem;align-items:center;">
         <span class="badge" style="background:var(--purple);">CS Head</span>
         <div>
-          <div style="font-size:.8em;font-weight:700;color:var(--white);">Esclusioni strutturali</div>
-          <div style="font-size:.65em;color:var(--gray1);">Bankruptcies e M&A fuori dal KPI. Save reversal entro 30gg = churn annullato.</div>
+          <div style="font-size:.72em;font-weight:700;color:var(--white);">Esclusioni strutturali</div>
+          <div style="font-size:.6em;color:var(--gray1);">Bankruptcies e M&A fuori dal KPI. Save reversal entro 30gg = churn annullato.</div>
         </div>
       </div>
     </div>
-    <div class="card" style="border-left:4px solid var(--green);border-radius:8px;padding:.7rem 1rem;">
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:center;">
+    <div class="card" style="border-left:4px solid var(--green);border-radius:6px;padding:.4rem .8rem;">
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:.8rem;align-items:center;">
         <span class="badge" style="background:var(--green);">Finance</span>
         <div>
-          <div style="font-size:.8em;font-weight:700;color:var(--white);">nMRR normalizzato</div>
-          <div style="font-size:.65em;color:var(--gray1);">Annuali ÷ 12. Micro &lt; €200/m esclusi dall'headline. Versioning obbligatorio.</div>
+          <div style="font-size:.72em;font-weight:700;color:var(--white);">nMRR normalizzato</div>
+          <div style="font-size:.6em;color:var(--gray1);">Annuali ÷ 12. Micro &lt; €200/m esclusi dall'headline. Versioning obbligatorio.</div>
         </div>
       </div>
     </div>
-    <div class="card" style="border-left:4px solid var(--cyan);border-radius:8px;padding:.7rem 1rem;">
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:center;">
+    <div class="card" style="border-left:4px solid var(--cyan);border-radius:6px;padding:.4rem .8rem;">
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:.8rem;align-items:center;">
         <span class="badge" style="background:var(--cyan);">Analyst</span>
         <div>
-          <div style="font-size:.8em;font-weight:700;color:var(--white);">Audit trail completo</div>
-          <div style="font-size:.65em;color:var(--gray1);">Soglie numeriche esplicite, boundary cases, 18 unit test automatici, export CSV versionato.</div>
+          <div style="font-size:.72em;font-weight:700;color:var(--white);">Audit trail completo</div>
+          <div style="font-size:.6em;color:var(--gray1);">Soglie numeriche esplicite, boundary cases, 18 unit test automatici, export CSV versionato.</div>
         </div>
       </div>
     </div>
@@ -350,10 +350,6 @@ HTML = r"""<!DOCTYPE html>
   <div class="cols2">
     <div>
       <div class="def-rule" style="border-color:var(--cyan);">
-        <div class="rule-label" style="color:var(--cyan);">Formula headline</div>
-        <div class="rule-text">nMRR Lost ÷ nMRR Active (inizio periodo) × 100</div>
-      </div>
-      <div class="def-rule" style="border-color:var(--cyan);">
         <div class="rule-label" style="color:var(--cyan);">Data canonica</div>
         <div class="rule-text">contract_end_date — non la data di cancellazione</div>
       </div>
@@ -365,12 +361,12 @@ HTML = r"""<!DOCTYPE html>
         <div class="rule-label" style="color:var(--orange);">Micro-contratti</div>
         <div class="rule-text">&lt; €200/mese → esclusi dall'headline, tracciati separatamente</div>
       </div>
-    </div>
-    <div>
       <div class="def-rule" style="border-color:var(--orange);">
         <div class="rule-label" style="color:var(--orange);">Downgrade / Contraction</div>
-        <div class="rule-text">Conta se delta ≥ €50 <strong>E</strong> ≥ 10% del nMRR precedente (doppia soglia)</div>
+        <div class="rule-text">Conta se delta ≥ €50 <strong>E</strong> ≥ 10% del nMRR precedente</div>
       </div>
+    </div>
+    <div>
       <div class="def-rule" style="border-color:var(--green);">
         <div class="rule-label" style="color:var(--green);">Save reversal</div>
         <div class="rule-text">Riattivazione entro 30 giorni da contract_end_date → churn annullato</div>
@@ -396,31 +392,31 @@ HTML = r"""<!DOCTYPE html>
     <h2>Tre layer indipendenti — testati, versionati, auditabili</h2>
   </div>
 
-  <div class="cols3" style="margin-bottom:.8rem;">
-    <div class="card orange" style="padding:1rem 1.2rem;">
-      <div style="font-size:1em;font-weight:800;color:var(--orange);margin-bottom:.4rem;">DATA</div>
-      <div class="muted" style="margin-bottom:.6rem;">5 CSV con noise iniettato</div>
-      <ul style="font-size:.65em;color:var(--gray1);">
+  <div class="cols3" style="margin-bottom:.5rem;">
+    <div class="card orange" style="padding:.5rem .8rem;">
+      <div style="font-size:.85em;font-weight:800;color:var(--orange);margin-bottom:.2rem;">DATA</div>
+      <div class="muted" style="margin-bottom:.3rem;">5 CSV con noise iniettato</div>
+      <ul style="font-size:.6em;color:var(--gray1);">
         <li>340 duplicati CRM</li>
         <li>Timezone mismatch UTC/CET</li>
         <li>15 segmenti errati</li>
         <li>12 end_date mancanti</li>
       </ul>
     </div>
-    <div class="card cyan" style="padding:1rem 1.2rem;">
-      <div style="font-size:1em;font-weight:800;color:var(--cyan);margin-bottom:.4rem;">ENGINE</div>
-      <div class="muted" style="margin-bottom:.6rem;">FastAPI · Pydantic · Python</div>
-      <ul style="font-size:.65em;color:var(--gray1);">
+    <div class="card cyan" style="padding:.5rem .8rem;">
+      <div style="font-size:.85em;font-weight:800;color:var(--cyan);margin-bottom:.2rem;">ENGINE</div>
+      <div class="muted" style="margin-bottom:.3rem;">FastAPI · Pydantic · Python</div>
+      <ul style="font-size:.6em;color:var(--gray1);">
         <li>calculator.py — pure functions</li>
         <li>18 unit test · 100% pass</li>
         <li>definition_version su ogni risultato</li>
         <li>save reversals · micro filter</li>
       </ul>
     </div>
-    <div class="card green" style="padding:1rem 1.2rem;">
-      <div style="font-size:1em;font-weight:800;color:var(--green);margin-bottom:.4rem;">DASHBOARD</div>
-      <div class="muted" style="margin-bottom:.6rem;">Streamlit · Plotly · Claude</div>
-      <ul style="font-size:.65em;color:var(--gray1);">
+    <div class="card green" style="padding:.5rem .8rem;">
+      <div style="font-size:.85em;font-weight:800;color:var(--green);margin-bottom:.2rem;">DASHBOARD</div>
+      <div class="muted" style="margin-bottom:.3rem;">Streamlit · Plotly · Claude</div>
+      <ul style="font-size:.6em;color:var(--gray1);">
         <li>KPI cards · trend · breakdown</li>
         <li>At-risk con risk score e CSM</li>
         <li>NL eval harness — 20/20 pass</li>
@@ -430,10 +426,10 @@ HTML = r"""<!DOCTYPE html>
   </div>
 
   <div class="cols4">
-    <div class="card green"><div class="card-label">Unit test</div><div class="card-value" style="color:var(--green);font-size:1.6em;">18 / 18</div></div>
-    <div class="card green"><div class="card-label">Golden questions</div><div class="card-value" style="color:var(--green);font-size:1.6em;">20 / 20</div></div>
-    <div class="card green"><div class="card-label">Accuracy</div><div class="card-value" style="color:var(--green);font-size:1.6em;">100%</div></div>
-    <div class="card green"><div class="card-label">False confidence</div><div class="card-value" style="color:var(--green);font-size:1.6em;">0%</div></div>
+    <div class="card green"><div class="card-label">Unit test</div><div class="card-value" style="color:var(--green);font-size:1.3em;">18 / 18</div></div>
+    <div class="card green"><div class="card-label">Golden questions</div><div class="card-value" style="color:var(--green);font-size:1.3em;">20 / 20</div></div>
+    <div class="card green"><div class="card-label">Accuracy</div><div class="card-value" style="color:var(--green);font-size:1.3em;">100%</div></div>
+    <div class="card green"><div class="card-label">False confidence</div><div class="card-value" style="color:var(--green);font-size:1.3em;">0%</div></div>
   </div>
 </section>
 
